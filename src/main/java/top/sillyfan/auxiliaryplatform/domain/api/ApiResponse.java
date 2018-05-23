@@ -1,4 +1,4 @@
-package top.sillyfan.domain.api;
+package top.sillyfan.auxiliaryplatform.domain.api;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;

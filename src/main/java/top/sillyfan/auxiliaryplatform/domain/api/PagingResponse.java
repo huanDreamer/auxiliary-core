@@ -1,4 +1,4 @@
-package top.sillyfan.domain.api;
+package top.sillyfan.auxiliaryplatform.domain.api;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

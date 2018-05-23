@@ -1,4 +1,4 @@
-package top.sillyfan.constants;
+package top.sillyfan.auxiliaryplatform.constants;
 
 import java.util.Arrays;
 import java.util.List;

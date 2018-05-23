@@ -1,4 +1,4 @@
-package top.sillyfan.domain.model;
+package top.sillyfan.auxiliaryplatform.domain.model;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;
@@ -9,8 +9,6 @@ import java.util.Date;
 import java.util.List;
 
 @Data
-@ToString
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Document

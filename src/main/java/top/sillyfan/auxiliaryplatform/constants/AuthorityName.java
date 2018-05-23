@@ -1,4 +1,4 @@
-package top.sillyfan.constants;
+package top.sillyfan.auxiliaryplatform.constants;
 
 public interface AuthorityName {
     /*用户 所有用户都有该权限*/
