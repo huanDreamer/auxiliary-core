@@ -11,5 +11,9 @@ public interface UserRepository extends MongoRepository<User, String> {
 
     Page<User> findByType(Integer type, Pageable pageable);
 
+    long countBySuperUser(String id);
+
+    Page<User> findBySuperUser(String id, Pageable pageable);
+
     User findByUsername(String username);
 }

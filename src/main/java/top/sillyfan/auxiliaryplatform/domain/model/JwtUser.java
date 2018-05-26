@@ -7,6 +7,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.util.CollectionUtils;
 import top.sillyfan.auxiliaryplatform.constants.AuthorityName;
+import top.sillyfan.auxiliaryplatform.constants.UserDef;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -32,11 +33,11 @@ public class JwtUser implements UserDetails {
 
     private Integer type;
 
+    private String superUser;
+
     private List<String> authorities;
 
     private Integer status;
-
-    private boolean enabled;
 
     private Date lastPasswordResetDate;
 
@@ -72,6 +73,6 @@ public class JwtUser implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return enabled;
+        return UserDef.UserStatusEnum.Enabled.match(this.status);
     }
 }

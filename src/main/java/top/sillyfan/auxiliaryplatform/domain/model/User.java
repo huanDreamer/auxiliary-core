@@ -5,6 +5,7 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import top.sillyfan.auxiliaryplatform.constants.UserDef;
+import top.sillyfan.auxiliaryplatform.domain.model.extend.UserMore;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @Document
 @Builder
-public class User {
+public class User extends UserMore {
 
     @Id
     private String id;
@@ -29,6 +30,9 @@ public class User {
     private String email;
 
     private Integer type;
+
+    /*二级辅助才有的字段，表示他的上级用户*/
+    private String superUser;
 
     // 余额
     private BigDecimal balance;
