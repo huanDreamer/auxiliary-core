@@ -18,12 +18,16 @@ public class PrincipalUtil {
      * @return
      * @throws IOException
      */
-    public static JwtUser extractUser(Principal principal) throws IOException {
+    public static JwtUser extractUser(Principal principal) {
 
         Object details = ((OAuth2Authentication) principal).getUserAuthentication().getDetails();
 
         // TODO user的authoprizes为乱的
-        JwtUser jwtUser = objectMapper.readValue(objectMapper.writeValueAsString(details), JwtUser.class);
+        JwtUser jwtUser = JwtUser.builder().build();
+        try {
+            jwtUser = objectMapper.readValue(objectMapper.writeValueAsString(details), JwtUser.class);
+        } catch (IOException e) {
+        }
 
         return jwtUser;
     }

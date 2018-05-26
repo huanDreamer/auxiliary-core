@@ -21,6 +21,10 @@ public interface UserDef {
         private Integer code;
         private String name;
         private List<String> auths;
+
+        public boolean match(final Integer code) {
+            return this.getCode().equals(code);
+        }
     }
 
 

@@ -30,7 +30,9 @@ public class Task {
     // 需求方id
     private String demanderId;
 
-    // 价格 指的是辅助方的价格
+    private String demanderName;
+
+    // 价格 指的是客户需要出的价格
     private Float price;
 
     // 状态
