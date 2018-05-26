@@ -13,4 +13,6 @@ public class AuxiliaryProperties {
     private Float price;
 
     private Integer taskExpire;
+
+    private String tmpPath;
 }
