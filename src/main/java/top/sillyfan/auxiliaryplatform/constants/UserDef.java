@@ -1,10 +1,15 @@
 package top.sillyfan.auxiliaryplatform.constants;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
 import java.util.Arrays;
 import java.util.List;
 
 public interface UserDef {
 
+    @AllArgsConstructor
+    @Getter
     enum UserTypeEnum {
 
         Admin(1, "管理员", Arrays.asList(AuthorityName.ROLE_ADMIN)),
@@ -16,39 +21,27 @@ public interface UserDef {
         private Integer code;
         private String name;
         private List<String> auths;
+    }
 
-        UserTypeEnum(Integer code, String name, List<String> auths) {
-            this.code = code;
-            this.name = name;
-            this.auths = auths;
-        }
+
+    @AllArgsConstructor
+    @Getter
+    enum UserStatusEnum {
+
+        Enabled(1, "有效"),
+        Disabled(10, "暂停"),
+        Deleted(90, "已删除")
+        ;
+
+        private Integer code;
+        private String name;
 
         public Boolean match(final Integer code) {
             return this.code.equals(code);
         }
 
-        public Integer getCode() {
-            return code;
-        }
-
-        public void setCode(Integer code) {
-            this.code = code;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public List<String> getAuths() {
-            return auths;
-        }
-
-        public void setAuths(List<String> auths) {
-            this.auths = auths;
+        static boolean isUserEnabled(final Integer code) {
+            return Enabled.match(code);
         }
     }
 }

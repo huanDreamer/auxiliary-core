@@ -31,7 +31,7 @@ public class Task {
     private String demanderId;
 
     // 价格 指的是辅助方的价格
-    private String price;
+    private Float price;
 
     // 状态
     private Integer status;

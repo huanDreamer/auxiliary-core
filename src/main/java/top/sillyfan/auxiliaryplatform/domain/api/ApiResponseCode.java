@@ -4,7 +4,10 @@ import org.springframework.util.Assert;
 
 public enum ApiResponseCode {
 
-    Api_0(ApiResponseCodeDef.Api_0, "成功");
+    Api_0(ApiResponseCodeDef.Api_0, "成功"),
+    Api_1001(ApiResponseCodeDef.Api_1001, "用户已存在")
+
+    ;
 
     private String code;
 

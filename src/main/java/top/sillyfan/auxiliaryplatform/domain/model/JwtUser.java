@@ -30,7 +30,11 @@ public class JwtUser implements UserDetails {
 
     private String email;
 
+    private Integer type;
+
     private List<String> authorities;
+
+    private Integer status;
 
     private boolean enabled;
 
