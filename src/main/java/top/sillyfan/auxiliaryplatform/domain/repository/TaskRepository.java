@@ -9,4 +9,8 @@ import top.sillyfan.auxiliaryplatform.domain.model.User;
 public interface TaskRepository extends MongoRepository<Task, String> {
 
     Page<Task> findByDemanderId(String demanderId, Pageable pageable);
+
+    Page<Task> findByStatus(Integer status, Pageable pageable);
+
+
 }
