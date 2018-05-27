@@ -34,6 +34,7 @@ public interface UserDef {
 
         Enabled(1, "有效"),
         Disabled(10, "暂停"),
+        Frozen(70, "被冻结"),
         Deleted(90, "已删除")
         ;
 

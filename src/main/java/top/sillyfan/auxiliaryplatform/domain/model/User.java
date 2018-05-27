@@ -1,7 +1,10 @@
 package top.sillyfan.auxiliaryplatform.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import top.sillyfan.auxiliaryplatform.constants.UserDef;
@@ -35,7 +38,12 @@ public class User extends UserMore {
     private String superUser;
 
     // 余额
-    private BigDecimal balance;
+    @Builder.Default
+    private BigDecimal balance = BigDecimal.ZERO;
+
+    // 被冻结的余额
+    @Builder.Default
+    private BigDecimal frozenBalance = BigDecimal.ZERO;
 
     @JsonIgnore
     @Builder.Default
@@ -45,4 +53,9 @@ public class User extends UserMore {
     private Integer status = UserDef.UserStatusEnum.Disabled.getCode();
 
     private Date lastPasswordResetDate;
+
+    @JsonIgnore
+    public BigDecimal getValidBalance() {
+        return balance.subtract(frozenBalance);
+    }
 }

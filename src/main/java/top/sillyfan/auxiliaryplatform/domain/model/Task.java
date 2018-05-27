@@ -1,5 +1,6 @@
 package top.sillyfan.auxiliaryplatform.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -7,6 +8,8 @@ import lombok.NoArgsConstructor;
 import org.joda.time.DateTime;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.math.BigDecimal;
 
 @Data
 @NoArgsConstructor
@@ -33,7 +36,7 @@ public class Task {
     private String demanderName;
 
     // 价格 指的是客户需要出的价格
-    private Float price;
+    private BigDecimal price;
 
     // 状态
     private Integer status;
@@ -49,4 +52,9 @@ public class Task {
 
     // 更新时间
     private DateTime updateTime;
+
+    @JsonIgnore
+    public Boolean isExpired() {
+        return DateTime.now().isAfter(createTime.plusSeconds(expire));
+    }
 }
