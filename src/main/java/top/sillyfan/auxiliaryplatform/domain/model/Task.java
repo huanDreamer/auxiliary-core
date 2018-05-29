@@ -8,15 +8,14 @@ import lombok.NoArgsConstructor;
 import org.joda.time.DateTime;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.math.BigDecimal;
+import top.sillyfan.auxiliaryplatform.domain.model.extend.TaskMore;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Document
-public class Task {
+public class Task extends TaskMore {
 
     @Id
     private String id;
@@ -32,11 +31,6 @@ public class Task {
 
     // 需求方id
     private String demanderId;
-
-    private String demanderName;
-
-    // 价格 指的是客户需要出的价格
-    private BigDecimal price;
 
     // 状态
     private Integer status;

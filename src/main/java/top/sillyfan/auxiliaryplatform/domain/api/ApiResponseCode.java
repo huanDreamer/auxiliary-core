@@ -6,7 +6,7 @@ public enum ApiResponseCode {
 
     Api_0(ApiResponseCodeDef.Api_0, "成功"),
     Api_1001(ApiResponseCodeDef.Api_1001, "用户已存在"),
-    Api_1002(ApiResponseCodeDef.Api_1002, "客户账户余额不足"),
+//    Api_1002(ApiResponseCodeDef.Api_1002, "客户账户余额不足"),
     Api_1003(ApiResponseCodeDef.Api_1003, "任务已被领取"),
     Api_1004(ApiResponseCodeDef.Api_1004, "任务已过期"),
     Api_1005(ApiResponseCodeDef.Api_1005, "任务未找到"),
