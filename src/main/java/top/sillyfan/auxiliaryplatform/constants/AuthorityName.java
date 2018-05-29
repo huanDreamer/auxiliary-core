@@ -8,6 +8,9 @@ public interface AuthorityName {
     String ROLE_SUPER_AUXILIARY = "ROLE_SUPER_AUXILIARY";
 
     /*二级辅助方*/
+    String ROLE_SECOND_AUXILIARY = "ROLE_SECOND_AUXILIARY";
+
+    /*辅助方*/
     String ROLE_AUXILIARY = "ROLE_AUXILIARY";
 
     /*需求方*/

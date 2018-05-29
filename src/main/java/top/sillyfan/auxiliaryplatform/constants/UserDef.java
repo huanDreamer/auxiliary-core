@@ -15,7 +15,8 @@ public interface UserDef {
         Admin(1, "管理员", Arrays.asList(AuthorityName.ROLE_ADMIN)),
         Demander(2, "需求方", Arrays.asList(AuthorityName.ROLE_DEMANDER)),
         Super_auxiliary(3, "一级辅助方", Arrays.asList(AuthorityName.ROLE_SUPER_AUXILIARY, AuthorityName.ROLE_AUXILIARY)),
-        Auxiliary(4, "二级辅助方", Arrays.asList(AuthorityName.ROLE_AUXILIARY)),
+        Second_auxiliary(4, "二级辅助", Arrays.asList(AuthorityName.ROLE_SECOND_AUXILIARY, AuthorityName.ROLE_AUXILIARY)),
+        Auxiliary(5, "辅助方", Arrays.asList(AuthorityName.ROLE_AUXILIARY)),
         ;
 
         private Integer code;

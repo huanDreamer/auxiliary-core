@@ -75,4 +75,25 @@ public class JwtUser implements UserDetails {
     public boolean isEnabled() {
         return UserDef.UserStatusEnum.Enabled.match(this.status);
     }
+
+    @JsonIgnore
+    public boolean isAdmin() {
+        return UserDef.UserTypeEnum.Admin.match(this.type);
+    }
+
+    @JsonIgnore
+    public boolean isSuperAuxiliary() {
+        return UserDef.UserTypeEnum.Super_auxiliary.match(this.type);
+    }
+
+    @JsonIgnore
+    public boolean isSecondAuxiliary() {
+        return UserDef.UserTypeEnum.Second_auxiliary.match(this.type);
+    }
+
+    @JsonIgnore
+    public boolean isAuxiliary() {
+        return UserDef.UserTypeEnum.Auxiliary.match(this.type);
+    }
+
 }
