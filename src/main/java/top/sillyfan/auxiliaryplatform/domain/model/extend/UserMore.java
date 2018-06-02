@@ -2,6 +2,7 @@ package top.sillyfan.auxiliaryplatform.domain.model.extend;
 
 import lombok.Data;
 import org.springframework.data.annotation.Transient;
+import top.sillyfan.auxiliaryplatform.domain.model.report.TaskReport;
 
 @Data
 public abstract class UserMore {
@@ -17,4 +18,7 @@ public abstract class UserMore {
     /*子账号有的字段，表示他上级用户名称*/
     @Transient
     private String superUserName;
+
+    @Transient
+    private TaskReport report;
 }

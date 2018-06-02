@@ -17,6 +17,6 @@ public class PagingResponse<T> {
 
     public PagingResponse(Page<T> data) {
         this.data = data.getContent();
-        this.pagingConf = new PagingConf((int) data.getTotalElements());
+        this.pagingConf = new PagingConf((int) data.getTotalElements(), data.getPageable().getPageNumber());
     }
 }

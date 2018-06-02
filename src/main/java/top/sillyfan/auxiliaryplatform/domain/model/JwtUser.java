@@ -100,4 +100,8 @@ public class JwtUser implements UserDetails {
         return UserDef.UserTypeEnum.Auxiliary.match(this.type);
     }
 
+    @JsonIgnore
+    public boolean isDemander() {
+        return UserDef.UserTypeEnum.Demander.match(this.type);
+    }
 }

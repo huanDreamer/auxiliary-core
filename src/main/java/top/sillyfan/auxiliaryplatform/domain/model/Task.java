@@ -32,6 +32,9 @@ public class Task extends TaskMore {
     // 需求方id
     private String demanderId;
 
+    // 领取者id
+    private String auxiliaryId;
+
     // 状态
     private Integer status;
 
