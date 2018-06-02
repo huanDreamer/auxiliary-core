@@ -35,6 +35,10 @@ public class User extends UserMore {
 
     private String email;
 
+    private String qq;
+
+    private String phone;
+
     private Integer type;
 
     /*二三级用户才有的字段，表示他的上级用户*/
