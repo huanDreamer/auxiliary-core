@@ -13,6 +13,8 @@ public interface UserRepository extends MongoRepository<User, String> {
 
     List<User> findByType(Integer type);
 
+    List<User> findByTypeAndStatusAndIdIn(Integer type, Integer status, List<String> ids);
+    
     long countBySuperUserIn(List<String> id);
 
     List<User> findBySuperUser(String id);

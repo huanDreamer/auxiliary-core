@@ -6,6 +6,7 @@ import top.sillyfan.auxiliaryplatform.domain.model.Task;
 import top.sillyfan.auxiliaryplatform.domain.model.UserTaskLink;
 import top.sillyfan.auxiliaryplatform.domain.model.report.TaskReport;
 
+import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -51,6 +52,15 @@ public class ReportUtil {
 
         // 未知状态
         builder.unkonwn(Optional.ofNullable(taskMap.get(TaskDef.TaskStatusEnum.Unknown)).map(Collection::size).orElse(0));
+
+        // 花费 = 初始化 + 已完成 的花费总额
+        Optional<Double> initCost = Optional.ofNullable(taskMap.get(TaskDef.TaskStatusEnum.Enabled))
+                .map(tasks -> tasks.stream().map(Task::getPrice).mapToDouble(BigDecimal::doubleValue).sum());
+
+        Optional<Double> complateCost = Optional.ofNullable(taskMap.get(TaskDef.TaskStatusEnum.Completed))
+                .map(tasks -> tasks.stream().map(Task::getPrice).mapToDouble(BigDecimal::doubleValue).sum());
+
+        builder.cost(BigDecimal.valueOf(initCost.orElse(0D)).add(BigDecimal.valueOf(complateCost.orElse(0D))));
 
         return builder.build();
     }

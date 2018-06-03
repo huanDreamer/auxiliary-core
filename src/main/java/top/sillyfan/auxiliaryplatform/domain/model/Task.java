@@ -10,6 +10,9 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import top.sillyfan.auxiliaryplatform.domain.model.extend.TaskMore;
 
+import java.math.BigDecimal;
+import java.util.Objects;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -28,6 +31,9 @@ public class Task extends TaskMore {
 
     // 描述
     private String describe;
+
+    @JsonIgnore
+    private BigDecimal price;
 
     // 需求方id
     private String demanderId;
@@ -52,6 +58,6 @@ public class Task extends TaskMore {
 
     @JsonIgnore
     public Boolean isExpired() {
-        return DateTime.now().isAfter(createTime.plusSeconds(expire));
+        return DateTime.now().isAfter(createTime.plusSeconds(Objects.isNull(expire) ? 0 : expire));
     }
 }

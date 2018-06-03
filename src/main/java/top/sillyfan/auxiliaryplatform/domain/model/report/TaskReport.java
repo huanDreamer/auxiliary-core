@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -34,6 +36,9 @@ public class TaskReport {
 
     // 未知状态
     private Integer unkonwn = 0;
+
+    // 花费
+    private BigDecimal cost = BigDecimal.ZERO;
 
     public static TaskReport empty() {
         return new TaskReport();

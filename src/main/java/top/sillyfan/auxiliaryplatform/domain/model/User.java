@@ -12,6 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import top.sillyfan.auxiliaryplatform.constants.UserDef;
 import top.sillyfan.auxiliaryplatform.domain.model.extend.UserMore;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -40,6 +41,12 @@ public class User extends UserMore {
     private String phone;
 
     private Integer type;
+
+    // 每单需要向平台付的价格
+    private BigDecimal price;
+
+    // 余额
+    private BigDecimal balance;
 
     /*二三级用户才有的字段，表示他的上级用户*/
     private String superUser;
