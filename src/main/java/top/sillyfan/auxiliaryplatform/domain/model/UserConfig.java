@@ -1,16 +1,23 @@
 package top.sillyfan.auxiliaryplatform.domain.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
+import java.util.List;
 
 /**
- * 用户的自定义配置
+ * 客户的自定义配置
  */
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserConfig {
+
+    // 默认
+    public static final UserConfig Default = new UserConfig();
 
     /*配置id 和用户id相同*/
     private String id;
@@ -22,10 +29,11 @@ public class UserConfig {
     // 任务内容
     private String taskDescribe;
 
-    // 任务出价
-    private BigDecimal taskPrice;
-
     // 过期时间 秒
     private Integer taskExpire;
 
+
+    /*********************** 辅助方配置 ***********************/
+    // 对接了的客户方
+    private List<String> preferDemanders;
 }

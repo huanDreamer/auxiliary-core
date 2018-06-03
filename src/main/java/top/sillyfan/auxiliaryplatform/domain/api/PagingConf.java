@@ -21,7 +21,7 @@ public class PagingConf {
     private Integer currentPage;
 
     /**
-     * 创建 mongo 分页请求参数
+     * 创建 mongo 分页请求参数 按照创建时间降序排列
      *
      * @param page
      * @param pageSize
@@ -29,5 +29,16 @@ public class PagingConf {
      */
     public static PageRequest pageRequest(Optional<Integer> page, Optional<Integer> pageSize) {
         return PageRequest.of(page.orElse(DefaultPage) - 1, pageSize.orElse(DefaultPageSize), Sort.by(Sort.Order.desc("createTime")));
+    }
+
+    /**
+     * 创建 mongo 分页请求参数 按照创建时间升序
+     *
+     * @param page
+     * @param pageSize
+     * @return
+     */
+    public static PageRequest pageRequestAsc(Optional<Integer> page, Optional<Integer> pageSize) {
+        return PageRequest.of(page.orElse(DefaultPage) - 1, pageSize.orElse(DefaultPageSize), Sort.by(Sort.Order.asc("createTime")));
     }
 }
