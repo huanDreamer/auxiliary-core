@@ -14,6 +14,9 @@ public enum ApiResponseCode {
     Api_1007(ApiResponseCodeDef.Api_1007, "余额不足，请尽快充值"),
     Api_1008(ApiResponseCodeDef.Api_1008, "未识别到二维码"),
     Api_1009(ApiResponseCodeDef.Api_1009, "用户未找到"),
+    Api_1010(ApiResponseCodeDef.Api_1010, "任务未被领取"),
+    Api_1011(ApiResponseCodeDef.Api_1011, "任务已完成"),
+    Api_1012(ApiResponseCodeDef.Api_1012, "未找到任务领取信息"),
     ;
 
     private String code;
