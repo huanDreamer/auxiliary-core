@@ -14,12 +14,14 @@ public interface UserRepository extends MongoRepository<User, String> {
     List<User> findByType(Integer type);
 
     List<User> findByTypeAndStatusAndIdIn(Integer type, Integer status, List<String> ids);
-    
+
     long countBySuperUserIn(List<String> id);
 
     List<User> findBySuperUser(String id);
 
     List<User> findBySuperUserIn(List<String> id);
+
+    Page<User> findByOnlineAndType(Integer onLine, Integer type, Pageable pageable);
 
     Page<User> findBySuperUser(String id, Pageable pageable);
 

@@ -42,6 +42,13 @@ public class User extends UserMore {
 
     private Integer type;
 
+    // 备注
+    private String mark;
+
+    // 在线状态
+    @Builder.Default
+    private Integer online = 0;
+
     // 每单需要向平台付的价格
     private BigDecimal price;
 
