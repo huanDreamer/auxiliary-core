@@ -10,9 +10,13 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "auxiliary.config")
 public class AuxiliaryProperties {
 
-    private Float price;
-
-    private Integer taskExpire;
-
     private String tmpPath;
+
+    // 七牛云配置
+    private String accessKey;
+
+    private String secretKey;
+
+    private String bucketName;
+
 }
