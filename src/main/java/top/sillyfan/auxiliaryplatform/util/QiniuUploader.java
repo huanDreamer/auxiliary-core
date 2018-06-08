@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
 import top.sillyfan.auxiliaryplatform.config.AuxiliaryProperties;
 
 import java.io.File;
@@ -16,13 +17,15 @@ import java.io.File;
 @Slf4j
 public class QiniuUploader {
 
-    @Autowired
+    @Autowired(required = false)
     AuxiliaryProperties properties;
 
     /**
      * 上传文件到七牛云
      */
     public void upload(File file, String key) {
+
+        Assert.notNull(properties, "properties注入失败");
 
         UploadManager uploadManager = new UploadManager(new Configuration());
         Auth auth = Auth.create(properties.getAccessKey(), properties.getSecretKey());
