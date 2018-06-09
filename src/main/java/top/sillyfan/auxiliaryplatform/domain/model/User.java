@@ -45,9 +45,9 @@ public class User extends UserMore {
     // 备注
     private String mark;
 
-    // 在线状态
+    // 辅助在线状态 默认离线
     @Builder.Default
-    private Integer online = 0;
+    private Integer online = UserDef.OnlineEnum.Offline.getCode();
 
     // 每单需要向平台付的价格
     private BigDecimal price;

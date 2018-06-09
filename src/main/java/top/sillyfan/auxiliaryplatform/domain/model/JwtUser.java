@@ -43,6 +43,8 @@ public class JwtUser implements UserDetails {
 
     private Integer status;
 
+    private Integer online;
+
     private Date lastPasswordResetDate;
 
     @JsonIgnore
