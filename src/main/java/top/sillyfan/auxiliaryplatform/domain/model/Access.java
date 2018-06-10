@@ -7,6 +7,7 @@ import lombok.Data;
 import org.joda.time.DateTime;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import top.sillyfan.auxiliaryplatform.domain.model.extend.AccessMore;
 
 /**
  * 接入记录
@@ -16,7 +17,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Access {
+public class Access extends AccessMore {
 
     @Id
     private String id;
@@ -24,6 +25,8 @@ public class Access {
     private String demanderId;
 
     private String auxiliaryId;
+
+    private String mark;
 
     private Integer status;
 

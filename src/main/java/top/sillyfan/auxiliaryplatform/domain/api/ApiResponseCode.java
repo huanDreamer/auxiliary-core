@@ -17,6 +17,8 @@ public enum ApiResponseCode {
     Api_1010(ApiResponseCodeDef.Api_1010, "任务未被领取"),
     Api_1011(ApiResponseCodeDef.Api_1011, "任务已完成"),
     Api_1012(ApiResponseCodeDef.Api_1012, "未找到任务领取信息"),
+    Api_1013(ApiResponseCodeDef.Api_1013, "未找到申请信息"),
+    Api_1014(ApiResponseCodeDef.Api_1014, "参数异常"),
     ;
 
     private String code;

@@ -10,7 +10,8 @@ public interface AccessDef {
     enum AccessStatusEnum {
         Access(1, "ok"),
         Init(10, "已发送"),
-        Reject(40, "拒绝");
+        Reject(40, "拒绝"),
+        UnAccess(90, "未对接");        // 非DB值，用于筛选
 
         private Integer code;
         private String name;

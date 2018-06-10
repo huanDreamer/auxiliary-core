@@ -16,6 +16,7 @@ public interface TaskDef {
         Exception(30, "异常结束"), // 用户领取任务之后没有完成
         Conducting(40, "进行中"),
         Completed(50, "完成"),
+        UserCompleted(60, "用户确认完成"),
         Frozen(70, "被冻结"),
         Deleted(90, "删除");
 

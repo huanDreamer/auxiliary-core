@@ -31,6 +31,9 @@ public class TaskReport {
     // 完成的任务
     private Integer completed = 0;
 
+    // 用户已完成
+    private Integer userCompleted = 0;
+
     // 被冻结
     private Integer frozen = 0;
 

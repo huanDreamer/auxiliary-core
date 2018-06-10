@@ -32,6 +32,9 @@ public class Task extends TaskMore {
     // 描述
     private String describe;
 
+    // 任务的电话号码
+    private String phone;
+
     @JsonIgnore
     private BigDecimal price;
 

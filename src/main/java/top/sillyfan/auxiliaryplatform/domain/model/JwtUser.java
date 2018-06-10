@@ -35,6 +35,8 @@ public class JwtUser implements UserDetails {
 
     private String phone;
 
+    private String mark;
+
     private Integer type;
 
     private String superUser;

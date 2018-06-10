@@ -21,4 +21,8 @@ public abstract class UserMore {
 
     @Transient
     private TaskReport report;
+
+    /*在用户中心返回已经用户列表时，需要显示用户和客户的对接关系*/
+    @Transient
+    private Integer accessStatus;
 }

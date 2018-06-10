@@ -4,8 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Transient;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * 客户的自定义配置
@@ -32,8 +34,17 @@ public class UserConfig {
     // 过期时间 秒
     private Integer taskExpire;
 
+    // 对接了的用户
+    private Set<String> preferAuxiliaries;
+
 
     /*********************** 辅助方配置 ***********************/
     // 对接了的客户方
-    private List<String> preferDemanders;
+    private Set<String> preferDemanders;
+
+    @Transient
+    public static UserConfig buildDefault(String id) {
+        return UserConfig.builder()
+                .id(id).build();
+    }
 }

@@ -47,6 +47,9 @@ public class ReportUtil {
         // 完成的任务
         builder.completed(Optional.ofNullable(taskMap.get(TaskDef.TaskStatusEnum.Completed)).map(Collection::size).orElse(0));
 
+        // 用户已完成
+        builder.userCompleted(Optional.ofNullable(taskMap.get(TaskDef.TaskStatusEnum.UserCompleted)).map(Collection::size).orElse(0));
+
         // 冻结
         builder.frozen(Optional.ofNullable(taskMap.get(TaskDef.TaskStatusEnum.Frozen)).map(Collection::size).orElse(0));
 
@@ -97,8 +100,8 @@ public class ReportUtil {
         // 完成的任务
         builder.completed(Optional.ofNullable(taskMap.get(TaskDef.TaskStatusEnum.Completed)).map(Collection::size).orElse(0));
 
-        // 冻结
-        builder.frozen(Optional.ofNullable(taskMap.get(TaskDef.TaskStatusEnum.Frozen)).map(Collection::size).orElse(0));
+        // 用户已完成
+        builder.userCompleted(Optional.ofNullable(taskMap.get(TaskDef.TaskStatusEnum.UserCompleted)).map(Collection::size).orElse(0));
 
         // 未知状态
         builder.unkonwn(Optional.ofNullable(taskMap.get(TaskDef.TaskStatusEnum.Unknown)).map(Collection::size).orElse(0));
