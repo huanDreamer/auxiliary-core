@@ -5,12 +5,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import top.sillyfan.auxiliaryplatform.domain.model.Settlement;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface SettlementRepository extends MongoRepository<Settlement, String> {
 
     Page<Settlement> findByAuxiliaryId(String auxiliary, Pageable pageable);
-
+    
     Page<Settlement> findByDemanderIdAndUserType(String demanderId, Integer userType, Pageable pageable);
 
     Optional<Settlement> findByAuxiliaryIdAndDemanderId(String auxiliaryId, String demanderId);
