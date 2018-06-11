@@ -23,6 +23,7 @@ public enum ApiResponseCode {
     Api_1016(ApiResponseCodeDef.Api_1016, "结算数必须小于当前完成数"),
     Api_1017(ApiResponseCodeDef.Api_1017, "任务已被暂停"),
     Api_1018(ApiResponseCodeDef.Api_1018, "任务已被冻结"),
+    Api_1019(ApiResponseCodeDef.Api_1019, "用户已被冻结接单功能，请联系管理员"),
     ;
 
     private String code;

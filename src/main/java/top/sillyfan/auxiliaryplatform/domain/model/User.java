@@ -65,5 +65,7 @@ public class User extends UserMore {
     @Builder.Default
     private Integer status = UserDef.UserStatusEnum.Disabled.getCode();
 
+    private Integer acceptTaskStatus;
+
     private Date lastPasswordResetDate;
 }

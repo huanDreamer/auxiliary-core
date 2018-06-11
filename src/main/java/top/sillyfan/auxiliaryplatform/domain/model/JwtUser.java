@@ -45,6 +45,8 @@ public class JwtUser implements UserDetails {
 
     private Integer status;
 
+    private Integer acceptTaskStatus;
+
     private Integer online;
 
     private Date lastPasswordResetDate;

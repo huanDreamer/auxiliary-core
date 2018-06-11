@@ -38,10 +38,11 @@ public class Settlement extends SettlementMore {
     private DateTime updateTime;
 
     @Transient
-    public static Settlement build(String auxiliaryId, String demanderId) {
+    public static Settlement build(String auxiliaryId, Integer userType, String demanderId) {
         return Settlement.builder()
                 .id(IdUtil.generateId())
                 .auxiliaryId(auxiliaryId)
+                .userType(userType)
                 .demanderId(demanderId)
                 .complete(0)
                 .userComplete(0)
