@@ -23,6 +23,8 @@ public class Settlement extends SettlementMore {
     // 用户id
     private String auxiliaryId;
 
+    private Integer userType;
+
     // 客户id
     private String demanderId;
 

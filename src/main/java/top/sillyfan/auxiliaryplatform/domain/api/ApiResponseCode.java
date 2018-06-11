@@ -21,6 +21,8 @@ public enum ApiResponseCode {
     Api_1014(ApiResponseCodeDef.Api_1014, "参数异常"),
     Api_1015(ApiResponseCodeDef.Api_1015, "结算信息未找到"),
     Api_1016(ApiResponseCodeDef.Api_1016, "结算数必须小于当前完成数"),
+    Api_1017(ApiResponseCodeDef.Api_1017, "任务已被暂停"),
+    Api_1018(ApiResponseCodeDef.Api_1018, "任务已被冻结"),
     ;
 
     private String code;

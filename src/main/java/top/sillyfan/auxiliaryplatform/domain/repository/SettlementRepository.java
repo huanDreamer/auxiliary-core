@@ -11,7 +11,8 @@ public interface SettlementRepository extends MongoRepository<Settlement, String
 
     Page<Settlement> findByAuxiliaryId(String auxiliary, Pageable pageable);
 
-    Page<Settlement> findByDemanderId(String demanderId, Pageable pageable);
+    Page<Settlement> findByDemanderIdAndUserType(String demanderId, Integer userType, Pageable pageable);
 
     Optional<Settlement> findByAuxiliaryIdAndDemanderId(String auxiliaryId, String demanderId);
+
 }
