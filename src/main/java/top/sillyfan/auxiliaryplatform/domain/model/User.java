@@ -63,7 +63,12 @@ public class User extends UserMore {
     @Builder.Default
     private Integer status = UserDef.UserStatusEnum.Disabled.getCode();
 
+    // 使用taskStatus代替
+    @Deprecated
     private Integer acceptTaskStatus;
+
+    /*用户是否可以接受 、 发布任务 1 可以  70 不可以*/
+    private Integer taskStatus;
 
     private Date lastPasswordResetDate;
 }
