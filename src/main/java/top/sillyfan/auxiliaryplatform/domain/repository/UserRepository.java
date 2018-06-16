@@ -10,9 +10,9 @@ import java.util.List;
 
 public interface UserRepository extends MongoRepository<User, String> {
 
-    Page<User> findByType(Integer type, Pageable pageable);
+    Page<User> findByTypeAndUsernameLike(Integer type, String name, Pageable pageable);
 
-    Page<User> findByTypeAndIdNotIn(Integer type, Collection<String> ids, Pageable pageable);
+    Page<User> findByTypeAndIdNotInAndUsernameLike(Integer type, Collection<String> ids, String name, Pageable pageable);
 
     List<User> findByTypeAndIdIn(Integer type, Collection<String> ids);
 
@@ -24,9 +24,9 @@ public interface UserRepository extends MongoRepository<User, String> {
 
     List<User> findBySuperUserIn(List<String> id);
 
-    Page<User> findByOnlineAndTypeAndIdNotIn(Integer onLine, Integer type, Collection<String> ids, Pageable pageable);
+    Page<User> findByOnlineAndTypeAndIdNotInAndUsernameLike(Integer onLine, Integer type, Collection<String> ids, String name, Pageable pageable);
 
-    Page<User> findBySuperUser(String id, Pageable pageable);
+    Page<User> findBySuperUserAndUsernameLike(String id, String name, Pageable pageable);
 
     User findByUsername(String username);
 }

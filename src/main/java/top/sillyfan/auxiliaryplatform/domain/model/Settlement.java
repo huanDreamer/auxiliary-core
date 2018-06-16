@@ -2,6 +2,7 @@ package top.sillyfan.auxiliaryplatform.domain.model;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.joda.time.DateTime;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
@@ -14,6 +15,7 @@ import top.sillyfan.auxiliaryplatform.util.IdUtil;
  */
 @Builder
 @Data
+@EqualsAndHashCode(callSuper = true)
 @Document
 public class Settlement extends SettlementMore {
 
