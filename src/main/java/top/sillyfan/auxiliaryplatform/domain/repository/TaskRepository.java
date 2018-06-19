@@ -13,7 +13,7 @@ public interface TaskRepository extends MongoRepository<Task, String> {
 
     List<Task> findByStatus(Integer status);
 
-    Page<Task> findByDemanderIdAndCreateTimeBetween(String demanderId, DateTime form, DateTime to, Pageable pageable);
+    Page<Task> findByDemanderIdAndPhoneLikeAndCreateTimeBetween(String demanderId, String phone, DateTime form, DateTime to, Pageable pageable);
 
     Page<Task> findByIdIn(List<String> ids, Pageable pageable);
 
@@ -23,5 +23,9 @@ public interface TaskRepository extends MongoRepository<Task, String> {
 
     List<Task> findByCreateTimeBetween(DateTime from, DateTime to);
 
-    Page<Task> findAllByCreateTimeBetween(DateTime form, DateTime to, Pageable pageable);
+    Page<Task> findByPhoneLikeAndCreateTimeBetween(String phone, DateTime form, DateTime to, Pageable pageable);
+
+    List<Task> findByPhoneLikeAndCreateTimeBetween(String phone, DateTime form, DateTime to);
+
+    Page<Task> findByPhoneLikeAndAuxiliaryIdInAndCreateTimeBetween(String phone, List<String> auxiliaryIds, DateTime form, DateTime to, Pageable pageable);
 }

@@ -19,5 +19,7 @@ public interface UserTaskLinkRepository extends MongoRepository<UserTaskLink, St
 
     List<UserTaskLink> findByTaskIdIn(List<String> taskIds);
 
+    Page<UserTaskLink> findByUserIdInAndTaskIdInAndCreateTimeBetween(List<String> userIds, List<String> taskIds, DateTime from, DateTime to, Pageable pageable);
+
     Optional<UserTaskLink> findByTaskId(String taskId);
 }

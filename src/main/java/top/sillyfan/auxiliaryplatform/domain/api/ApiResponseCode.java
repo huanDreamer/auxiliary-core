@@ -24,7 +24,8 @@ public enum ApiResponseCode {
     Api_1017(ApiResponseCodeDef.Api_1017, "任务已被暂停"),
     Api_1018(ApiResponseCodeDef.Api_1018, "任务已被冻结"),
     Api_1019(ApiResponseCodeDef.Api_1019, "用户已被冻结接单功能，请联系管理员"),
-    Api_1020(ApiResponseCodeDef.Api_1019, "客户已被冻结建单功能，请联系管理员"),
+    Api_1020(ApiResponseCodeDef.Api_1020, "客户已被冻结建单功能，请联系管理员"),
+    Api_1021(ApiResponseCodeDef.Api_1021, "文件过大"),
     ;
 
     private String code;
