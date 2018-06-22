@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+
+    <classPathEntry location="./target/dependency/mysql-connector-java-5.1.34.jar"/>
+
+    <context id="context1" defaultModelType="flat" targetRuntime="MyBatis3">
+        
+        <plugin type="top.sillyfan.auxiliaryplatform.dao.MySQLLimitPlugin"/>
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="false"/>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="${mybatis.generator.jdbcDriver}"
+                        connectionURL="${mybatis.generator.jdbcURL}"
+                        userId="${mybatis.generator.jdbcUserId}"
+                        password="${mybatis.generator.jdbcPassword}"/>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="top.sillyfan.auxiliaryplatform.domain.model"
+                            targetProject="./src/main/java">
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="top.sillyfan.auxiliaryplatform.domain.model.repository"
+                         targetProject="./src/main/resources/config/mybatis/mapper">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator targetPackage="top.sillyfan.auxiliaryplatform.domain.model.repository"
+                             targetProject="./src/main/java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+
+        <table tableName="t_user" domainObjectName="User"
+               enableCountByExample="true"
+               enableUpdateByExample="true"
+               enableDeleteByExample="true"
+               enableSelectByExample="true"
+               selectByExampleQueryId="false">
+
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+
+            <columnOverride column="online" javaType="java.lang.Integer"/>
+            <columnOverride column="price" javaType="java.math.BigDecimal"/>
+            <columnOverride column="balance" javaType="java.math.BigDecimal"/>
+            <columnOverride column="authorizes" javaType="top.sillyfan.auxiliaryplatform.domain.model.json.StringList"
+                            typeHandler="top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.StringListTypeHandler"/>
+            <columnOverride column="status" javaType="java.lang.Integer"/>
+            <columnOverride column="type" javaType="java.lang.Integer"/>
+            <columnOverride column="taskStatus" javaType="java.lang.Integer"/>
+            <columnOverride column="lastPasswordResetDate" javaType="org.joda.time.DateTime"
+                            typeHandler="top.sillyfan.dao.mybatis.typehandler.JodaDateTimeTypeHandler"/>
+        </table>
+
+    </context>
+
+</generatorConfiguration>

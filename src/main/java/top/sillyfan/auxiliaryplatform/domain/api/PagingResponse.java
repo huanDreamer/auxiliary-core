@@ -2,7 +2,7 @@ package top.sillyfan.auxiliaryplatform.domain.api;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.springframework.data.domain.Page;
+import top.sillyfan.auxiliaryplatform.domain.api.page.Page;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ public class PagingResponse<T> {
     private PagingConf pagingConf;
 
     public PagingResponse(Page<T> data) {
-        this.data = data.getContent();
-        this.pagingConf = new PagingConf((int) data.getTotalElements(), data.getPageable().getPageNumber());
+        this.data = data.getElements();
+        this.pagingConf = new PagingConf(data.getTotal(), data.getPage());
     }
 }

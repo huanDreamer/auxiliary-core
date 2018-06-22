@@ -16,13 +16,15 @@ public class UserUtil {
      */
     public static User cleanInfo(User user) {
 
-        return User.builder()
-                .id(user.getId())
-                .email(user.getEmail())
-                .username(user.getUsername())
-                .qq(user.getQq())
-                .mark(user.getMark())
-                .phone(user.getPhone())
-                .build();
+        User u = new User();
+
+        u.setId(user.getId());
+        u.setEmail(user.getEmail());
+        u.setUsername(user.getUsername());
+        u.setQq(user.getQq());
+        u.setMark(user.getMark());
+        u.setPhone(user.getPhone());
+
+        return u;
     }
 }
