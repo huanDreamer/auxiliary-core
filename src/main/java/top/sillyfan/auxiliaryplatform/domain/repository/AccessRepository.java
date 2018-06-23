@@ -9,9 +9,5 @@ import java.util.List;
 
 public interface AccessRepository extends MongoRepository<Access, String> {
 
-    Access findByDemanderIdAndAuxiliaryId(String demanderId, String auxiliaryId);
 
-    List<Access> findByDemanderIdAndAuxiliaryIdIn(String demanderId, List<String> auxiliaryIds);
-
-    Page<Access> findByAuxiliaryId(String auxiliaryId, Pageable pageable);
 }

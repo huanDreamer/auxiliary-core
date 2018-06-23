@@ -179,7 +179,7 @@ public class UserExample {
     protected abstract static class GeneratedCriteria {
         protected List<Criterion> authorizesCriteria;
 
-        protected List<Criterion> lastpasswordresetdateCriteria;
+        protected List<Criterion> lastPasswordResetDateCriteria;
 
         protected List<Criterion> allCriteria;
 
@@ -189,7 +189,7 @@ public class UserExample {
             super();
             criteria = new ArrayList<Criterion>();
             authorizesCriteria = new ArrayList<Criterion>();
-            lastpasswordresetdateCriteria = new ArrayList<Criterion>();
+            lastPasswordResetDateCriteria = new ArrayList<Criterion>();
         }
 
         public List<Criterion> getAuthorizesCriteria() {
@@ -212,30 +212,30 @@ public class UserExample {
             allCriteria = null;
         }
 
-        public List<Criterion> getLastpasswordresetdateCriteria() {
-            return lastpasswordresetdateCriteria;
+        public List<Criterion> getLastPasswordResetDateCriteria() {
+            return lastPasswordResetDateCriteria;
         }
 
-        protected void addLastpasswordresetdateCriterion(String condition, Object value, String property) {
+        protected void addLastPasswordResetDateCriterion(String condition, Object value, String property) {
             if (value == null) {
                 throw new RuntimeException("Value for " + property + " cannot be null");
             }
-            lastpasswordresetdateCriteria.add(new Criterion(condition, value, "top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler"));
+            lastPasswordResetDateCriteria.add(new Criterion(condition, value, "top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler"));
             allCriteria = null;
         }
 
-        protected void addLastpasswordresetdateCriterion(String condition, DateTime value1, DateTime value2, String property) {
+        protected void addLastPasswordResetDateCriterion(String condition, DateTime value1, DateTime value2, String property) {
             if (value1 == null || value2 == null) {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
-            lastpasswordresetdateCriteria.add(new Criterion(condition, value1, value2, "top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler"));
+            lastPasswordResetDateCriteria.add(new Criterion(condition, value1, value2, "top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler"));
             allCriteria = null;
         }
 
         public boolean isValid() {
             return criteria.size() > 0
                 || authorizesCriteria.size() > 0
-                || lastpasswordresetdateCriteria.size() > 0;
+                || lastPasswordResetDateCriteria.size() > 0;
         }
 
         public List<Criterion> getAllCriteria() {
@@ -243,7 +243,7 @@ public class UserExample {
                 allCriteria = new ArrayList<Criterion>();
                 allCriteria.addAll(criteria);
                 allCriteria.addAll(authorizesCriteria);
-                allCriteria.addAll(lastpasswordresetdateCriteria);
+                allCriteria.addAll(lastPasswordResetDateCriteria);
             }
             return allCriteria;
         }
@@ -336,63 +336,63 @@ public class UserExample {
             return (Criteria) this;
         }
 
-        public Criteria andSuperuserIsNull() {
-            addCriterion("superUser is null");
+        public Criteria andSuperUserIsNull() {
+            addCriterion("super_user is null");
             return (Criteria) this;
         }
 
-        public Criteria andSuperuserIsNotNull() {
-            addCriterion("superUser is not null");
+        public Criteria andSuperUserIsNotNull() {
+            addCriterion("super_user is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSuperuserEqualTo(Long value) {
-            addCriterion("superUser =", value, "superuser");
+        public Criteria andSuperUserEqualTo(Long value) {
+            addCriterion("super_user =", value, "superUser");
             return (Criteria) this;
         }
 
-        public Criteria andSuperuserNotEqualTo(Long value) {
-            addCriterion("superUser <>", value, "superuser");
+        public Criteria andSuperUserNotEqualTo(Long value) {
+            addCriterion("super_user <>", value, "superUser");
             return (Criteria) this;
         }
 
-        public Criteria andSuperuserGreaterThan(Long value) {
-            addCriterion("superUser >", value, "superuser");
+        public Criteria andSuperUserGreaterThan(Long value) {
+            addCriterion("super_user >", value, "superUser");
             return (Criteria) this;
         }
 
-        public Criteria andSuperuserGreaterThanOrEqualTo(Long value) {
-            addCriterion("superUser >=", value, "superuser");
+        public Criteria andSuperUserGreaterThanOrEqualTo(Long value) {
+            addCriterion("super_user >=", value, "superUser");
             return (Criteria) this;
         }
 
-        public Criteria andSuperuserLessThan(Long value) {
-            addCriterion("superUser <", value, "superuser");
+        public Criteria andSuperUserLessThan(Long value) {
+            addCriterion("super_user <", value, "superUser");
             return (Criteria) this;
         }
 
-        public Criteria andSuperuserLessThanOrEqualTo(Long value) {
-            addCriterion("superUser <=", value, "superuser");
+        public Criteria andSuperUserLessThanOrEqualTo(Long value) {
+            addCriterion("super_user <=", value, "superUser");
             return (Criteria) this;
         }
 
-        public Criteria andSuperuserIn(List<Long> values) {
-            addCriterion("superUser in", values, "superuser");
+        public Criteria andSuperUserIn(List<Long> values) {
+            addCriterion("super_user in", values, "superUser");
             return (Criteria) this;
         }
 
-        public Criteria andSuperuserNotIn(List<Long> values) {
-            addCriterion("superUser not in", values, "superuser");
+        public Criteria andSuperUserNotIn(List<Long> values) {
+            addCriterion("super_user not in", values, "superUser");
             return (Criteria) this;
         }
 
-        public Criteria andSuperuserBetween(Long value1, Long value2) {
-            addCriterion("superUser between", value1, value2, "superuser");
+        public Criteria andSuperUserBetween(Long value1, Long value2) {
+            addCriterion("super_user between", value1, value2, "superUser");
             return (Criteria) this;
         }
 
-        public Criteria andSuperuserNotBetween(Long value1, Long value2) {
-            addCriterion("superUser not between", value1, value2, "superuser");
+        public Criteria andSuperUserNotBetween(Long value1, Long value2) {
+            addCriterion("super_user not between", value1, value2, "superUser");
             return (Criteria) this;
         }
 
@@ -806,63 +806,63 @@ public class UserExample {
             return (Criteria) this;
         }
 
-        public Criteria andMaxtokennumIsNull() {
-            addCriterion("maxTokenNum is null");
+        public Criteria andMaxTokenNumIsNull() {
+            addCriterion("max_token_num is null");
             return (Criteria) this;
         }
 
-        public Criteria andMaxtokennumIsNotNull() {
-            addCriterion("maxTokenNum is not null");
+        public Criteria andMaxTokenNumIsNotNull() {
+            addCriterion("max_token_num is not null");
             return (Criteria) this;
         }
 
-        public Criteria andMaxtokennumEqualTo(Integer value) {
-            addCriterion("maxTokenNum =", value, "maxtokennum");
+        public Criteria andMaxTokenNumEqualTo(Integer value) {
+            addCriterion("max_token_num =", value, "maxTokenNum");
             return (Criteria) this;
         }
 
-        public Criteria andMaxtokennumNotEqualTo(Integer value) {
-            addCriterion("maxTokenNum <>", value, "maxtokennum");
+        public Criteria andMaxTokenNumNotEqualTo(Integer value) {
+            addCriterion("max_token_num <>", value, "maxTokenNum");
             return (Criteria) this;
         }
 
-        public Criteria andMaxtokennumGreaterThan(Integer value) {
-            addCriterion("maxTokenNum >", value, "maxtokennum");
+        public Criteria andMaxTokenNumGreaterThan(Integer value) {
+            addCriterion("max_token_num >", value, "maxTokenNum");
             return (Criteria) this;
         }
 
-        public Criteria andMaxtokennumGreaterThanOrEqualTo(Integer value) {
-            addCriterion("maxTokenNum >=", value, "maxtokennum");
+        public Criteria andMaxTokenNumGreaterThanOrEqualTo(Integer value) {
+            addCriterion("max_token_num >=", value, "maxTokenNum");
             return (Criteria) this;
         }
 
-        public Criteria andMaxtokennumLessThan(Integer value) {
-            addCriterion("maxTokenNum <", value, "maxtokennum");
+        public Criteria andMaxTokenNumLessThan(Integer value) {
+            addCriterion("max_token_num <", value, "maxTokenNum");
             return (Criteria) this;
         }
 
-        public Criteria andMaxtokennumLessThanOrEqualTo(Integer value) {
-            addCriterion("maxTokenNum <=", value, "maxtokennum");
+        public Criteria andMaxTokenNumLessThanOrEqualTo(Integer value) {
+            addCriterion("max_token_num <=", value, "maxTokenNum");
             return (Criteria) this;
         }
 
-        public Criteria andMaxtokennumIn(List<Integer> values) {
-            addCriterion("maxTokenNum in", values, "maxtokennum");
+        public Criteria andMaxTokenNumIn(List<Integer> values) {
+            addCriterion("max_token_num in", values, "maxTokenNum");
             return (Criteria) this;
         }
 
-        public Criteria andMaxtokennumNotIn(List<Integer> values) {
-            addCriterion("maxTokenNum not in", values, "maxtokennum");
+        public Criteria andMaxTokenNumNotIn(List<Integer> values) {
+            addCriterion("max_token_num not in", values, "maxTokenNum");
             return (Criteria) this;
         }
 
-        public Criteria andMaxtokennumBetween(Integer value1, Integer value2) {
-            addCriterion("maxTokenNum between", value1, value2, "maxtokennum");
+        public Criteria andMaxTokenNumBetween(Integer value1, Integer value2) {
+            addCriterion("max_token_num between", value1, value2, "maxTokenNum");
             return (Criteria) this;
         }
 
-        public Criteria andMaxtokennumNotBetween(Integer value1, Integer value2) {
-            addCriterion("maxTokenNum not between", value1, value2, "maxtokennum");
+        public Criteria andMaxTokenNumNotBetween(Integer value1, Integer value2) {
+            addCriterion("max_token_num not between", value1, value2, "maxTokenNum");
             return (Criteria) this;
         }
 
@@ -1166,123 +1166,123 @@ public class UserExample {
             return (Criteria) this;
         }
 
-        public Criteria andTaskstatusIsNull() {
-            addCriterion("taskStatus is null");
+        public Criteria andTaskStatusIsNull() {
+            addCriterion("task_status is null");
             return (Criteria) this;
         }
 
-        public Criteria andTaskstatusIsNotNull() {
-            addCriterion("taskStatus is not null");
+        public Criteria andTaskStatusIsNotNull() {
+            addCriterion("task_status is not null");
             return (Criteria) this;
         }
 
-        public Criteria andTaskstatusEqualTo(Integer value) {
-            addCriterion("taskStatus =", value, "taskstatus");
+        public Criteria andTaskStatusEqualTo(Integer value) {
+            addCriterion("task_status =", value, "taskStatus");
             return (Criteria) this;
         }
 
-        public Criteria andTaskstatusNotEqualTo(Integer value) {
-            addCriterion("taskStatus <>", value, "taskstatus");
+        public Criteria andTaskStatusNotEqualTo(Integer value) {
+            addCriterion("task_status <>", value, "taskStatus");
             return (Criteria) this;
         }
 
-        public Criteria andTaskstatusGreaterThan(Integer value) {
-            addCriterion("taskStatus >", value, "taskstatus");
+        public Criteria andTaskStatusGreaterThan(Integer value) {
+            addCriterion("task_status >", value, "taskStatus");
             return (Criteria) this;
         }
 
-        public Criteria andTaskstatusGreaterThanOrEqualTo(Integer value) {
-            addCriterion("taskStatus >=", value, "taskstatus");
+        public Criteria andTaskStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("task_status >=", value, "taskStatus");
             return (Criteria) this;
         }
 
-        public Criteria andTaskstatusLessThan(Integer value) {
-            addCriterion("taskStatus <", value, "taskstatus");
+        public Criteria andTaskStatusLessThan(Integer value) {
+            addCriterion("task_status <", value, "taskStatus");
             return (Criteria) this;
         }
 
-        public Criteria andTaskstatusLessThanOrEqualTo(Integer value) {
-            addCriterion("taskStatus <=", value, "taskstatus");
+        public Criteria andTaskStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("task_status <=", value, "taskStatus");
             return (Criteria) this;
         }
 
-        public Criteria andTaskstatusIn(List<Integer> values) {
-            addCriterion("taskStatus in", values, "taskstatus");
+        public Criteria andTaskStatusIn(List<Integer> values) {
+            addCriterion("task_status in", values, "taskStatus");
             return (Criteria) this;
         }
 
-        public Criteria andTaskstatusNotIn(List<Integer> values) {
-            addCriterion("taskStatus not in", values, "taskstatus");
+        public Criteria andTaskStatusNotIn(List<Integer> values) {
+            addCriterion("task_status not in", values, "taskStatus");
             return (Criteria) this;
         }
 
-        public Criteria andTaskstatusBetween(Integer value1, Integer value2) {
-            addCriterion("taskStatus between", value1, value2, "taskstatus");
+        public Criteria andTaskStatusBetween(Integer value1, Integer value2) {
+            addCriterion("task_status between", value1, value2, "taskStatus");
             return (Criteria) this;
         }
 
-        public Criteria andTaskstatusNotBetween(Integer value1, Integer value2) {
-            addCriterion("taskStatus not between", value1, value2, "taskstatus");
+        public Criteria andTaskStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("task_status not between", value1, value2, "taskStatus");
             return (Criteria) this;
         }
 
-        public Criteria andLastpasswordresetdateIsNull() {
-            addCriterion("lastPasswordResetDate is null");
+        public Criteria andLastPasswordResetDateIsNull() {
+            addCriterion("last_password_reset_date is null");
             return (Criteria) this;
         }
 
-        public Criteria andLastpasswordresetdateIsNotNull() {
-            addCriterion("lastPasswordResetDate is not null");
+        public Criteria andLastPasswordResetDateIsNotNull() {
+            addCriterion("last_password_reset_date is not null");
             return (Criteria) this;
         }
 
-        public Criteria andLastpasswordresetdateEqualTo(DateTime value) {
-            addLastpasswordresetdateCriterion("lastPasswordResetDate =", value, "lastpasswordresetdate");
+        public Criteria andLastPasswordResetDateEqualTo(DateTime value) {
+            addLastPasswordResetDateCriterion("last_password_reset_date =", value, "lastPasswordResetDate");
             return (Criteria) this;
         }
 
-        public Criteria andLastpasswordresetdateNotEqualTo(DateTime value) {
-            addLastpasswordresetdateCriterion("lastPasswordResetDate <>", value, "lastpasswordresetdate");
+        public Criteria andLastPasswordResetDateNotEqualTo(DateTime value) {
+            addLastPasswordResetDateCriterion("last_password_reset_date <>", value, "lastPasswordResetDate");
             return (Criteria) this;
         }
 
-        public Criteria andLastpasswordresetdateGreaterThan(DateTime value) {
-            addLastpasswordresetdateCriterion("lastPasswordResetDate >", value, "lastpasswordresetdate");
+        public Criteria andLastPasswordResetDateGreaterThan(DateTime value) {
+            addLastPasswordResetDateCriterion("last_password_reset_date >", value, "lastPasswordResetDate");
             return (Criteria) this;
         }
 
-        public Criteria andLastpasswordresetdateGreaterThanOrEqualTo(DateTime value) {
-            addLastpasswordresetdateCriterion("lastPasswordResetDate >=", value, "lastpasswordresetdate");
+        public Criteria andLastPasswordResetDateGreaterThanOrEqualTo(DateTime value) {
+            addLastPasswordResetDateCriterion("last_password_reset_date >=", value, "lastPasswordResetDate");
             return (Criteria) this;
         }
 
-        public Criteria andLastpasswordresetdateLessThan(DateTime value) {
-            addLastpasswordresetdateCriterion("lastPasswordResetDate <", value, "lastpasswordresetdate");
+        public Criteria andLastPasswordResetDateLessThan(DateTime value) {
+            addLastPasswordResetDateCriterion("last_password_reset_date <", value, "lastPasswordResetDate");
             return (Criteria) this;
         }
 
-        public Criteria andLastpasswordresetdateLessThanOrEqualTo(DateTime value) {
-            addLastpasswordresetdateCriterion("lastPasswordResetDate <=", value, "lastpasswordresetdate");
+        public Criteria andLastPasswordResetDateLessThanOrEqualTo(DateTime value) {
+            addLastPasswordResetDateCriterion("last_password_reset_date <=", value, "lastPasswordResetDate");
             return (Criteria) this;
         }
 
-        public Criteria andLastpasswordresetdateIn(List<DateTime> values) {
-            addLastpasswordresetdateCriterion("lastPasswordResetDate in", values, "lastpasswordresetdate");
+        public Criteria andLastPasswordResetDateIn(List<DateTime> values) {
+            addLastPasswordResetDateCriterion("last_password_reset_date in", values, "lastPasswordResetDate");
             return (Criteria) this;
         }
 
-        public Criteria andLastpasswordresetdateNotIn(List<DateTime> values) {
-            addLastpasswordresetdateCriterion("lastPasswordResetDate not in", values, "lastpasswordresetdate");
+        public Criteria andLastPasswordResetDateNotIn(List<DateTime> values) {
+            addLastPasswordResetDateCriterion("last_password_reset_date not in", values, "lastPasswordResetDate");
             return (Criteria) this;
         }
 
-        public Criteria andLastpasswordresetdateBetween(DateTime value1, DateTime value2) {
-            addLastpasswordresetdateCriterion("lastPasswordResetDate between", value1, value2, "lastpasswordresetdate");
+        public Criteria andLastPasswordResetDateBetween(DateTime value1, DateTime value2) {
+            addLastPasswordResetDateCriterion("last_password_reset_date between", value1, value2, "lastPasswordResetDate");
             return (Criteria) this;
         }
 
-        public Criteria andLastpasswordresetdateNotBetween(DateTime value1, DateTime value2) {
-            addLastpasswordresetdateCriterion("lastPasswordResetDate not between", value1, value2, "lastpasswordresetdate");
+        public Criteria andLastPasswordResetDateNotBetween(DateTime value1, DateTime value2) {
+            addLastPasswordResetDateCriterion("last_password_reset_date not between", value1, value2, "lastPasswordResetDate");
             return (Criteria) this;
         }
 
@@ -1353,6 +1353,76 @@ public class UserExample {
 
         public Criteria andMarkNotBetween(String value1, String value2) {
             addCriterion("mark not between", value1, value2, "mark");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldIdIsNull() {
+            addCriterion("old_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldIdIsNotNull() {
+            addCriterion("old_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldIdEqualTo(String value) {
+            addCriterion("old_id =", value, "oldId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldIdNotEqualTo(String value) {
+            addCriterion("old_id <>", value, "oldId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldIdGreaterThan(String value) {
+            addCriterion("old_id >", value, "oldId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldIdGreaterThanOrEqualTo(String value) {
+            addCriterion("old_id >=", value, "oldId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldIdLessThan(String value) {
+            addCriterion("old_id <", value, "oldId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldIdLessThanOrEqualTo(String value) {
+            addCriterion("old_id <=", value, "oldId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldIdLike(String value) {
+            addCriterion("old_id like", value, "oldId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldIdNotLike(String value) {
+            addCriterion("old_id not like", value, "oldId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldIdIn(List<String> values) {
+            addCriterion("old_id in", values, "oldId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldIdNotIn(List<String> values) {
+            addCriterion("old_id not in", values, "oldId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldIdBetween(String value1, String value2) {
+            addCriterion("old_id between", value1, value2, "oldId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOldIdNotBetween(String value1, String value2) {
+            addCriterion("old_id not between", value1, value2, "oldId");
             return (Criteria) this;
         }
     }

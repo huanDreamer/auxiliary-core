@@ -47,6 +47,8 @@
                enableSelectByExample="true"
                selectByExampleQueryId="false">
 
+            <property name="rootClass" value="top.sillyfan.auxiliaryplatform.domain.model.extend.UserMore"/>
+
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
 
             <columnOverride column="online" javaType="java.lang.Integer"/>
@@ -56,8 +58,8 @@
                             typeHandler="top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.StringListTypeHandler"/>
             <columnOverride column="status" javaType="java.lang.Integer"/>
             <columnOverride column="type" javaType="java.lang.Integer"/>
-            <columnOverride column="taskStatus" javaType="java.lang.Integer"/>
-            <columnOverride column="lastPasswordResetDate" javaType="org.joda.time.DateTime"
+            <columnOverride column="task_status" javaType="java.lang.Integer"/>
+            <columnOverride column="last_password_reset_date" javaType="org.joda.time.DateTime"
                             typeHandler="top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler"/>
         </table>
 
@@ -81,13 +83,15 @@
                enableSelectByExample="true"
                selectByExampleQueryId="false">
 
+            <property name="rootClass" value="top.sillyfan.auxiliaryplatform.domain.model.extend.AccessMore"/>
+
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
 
             <columnOverride column="status" javaType="java.lang.Integer"/>
 
-            <columnOverride column="createTime" javaType="org.joda.time.DateTime"
+            <columnOverride column="create_time" javaType="org.joda.time.DateTime"
                             typeHandler="top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler"/>
-            <columnOverride column="updateTime" javaType="org.joda.time.DateTime"
+            <columnOverride column="update_time" javaType="org.joda.time.DateTime"
                             typeHandler="top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler"/>
         </table>
 
@@ -98,11 +102,13 @@
                enableSelectByExample="true"
                selectByExampleQueryId="false">
 
+            <property name="rootClass" value="top.sillyfan.auxiliaryplatform.domain.model.extend.SettlementMore"/>
+
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
 
-            <columnOverride column="userType" javaType="java.lang.Integer"/>
+            <columnOverride column="user_type" javaType="java.lang.Integer"/>
 
-            <columnOverride column="updateTime" javaType="org.joda.time.DateTime"
+            <columnOverride column="update_time" javaType="org.joda.time.DateTime"
                             typeHandler="top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler"/>
         </table>
 
@@ -113,18 +119,58 @@
                enableSelectByExample="true"
                selectByExampleQueryId="false">
 
+            <property name="rootClass" value="top.sillyfan.auxiliaryplatform.domain.model.extend.TaskMore"/>
+
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
 
             <columnOverride column="status" javaType="java.lang.Integer"/>
 
             <columnOverride column="price" javaType="java.math.BigDecimal"/>
 
-            <columnOverride column="expire" javaType="org.joda.time.DateTime"
+            <columnOverride column="expire_time" javaType="java.lang.Integer"/>
+
+            <columnOverride column="create_time" javaType="org.joda.time.DateTime"
                             typeHandler="top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler"/>
-            
-            <columnOverride column="createTime" javaType="org.joda.time.DateTime"
+            <columnOverride column="update_time" javaType="org.joda.time.DateTime"
                             typeHandler="top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler"/>
-            <columnOverride column="updateTime" javaType="org.joda.time.DateTime"
+        </table>
+
+        <table tableName="t_user_config" domainObjectName="UserConfig"
+               enableCountByExample="true"
+               enableUpdateByExample="true"
+               enableDeleteByExample="true"
+               enableSelectByExample="true"
+               selectByExampleQueryId="false">
+
+            <property name="rootClass" value="top.sillyfan.auxiliaryplatform.domain.model.extend.UserConfigMore"/>
+
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+
+            <columnOverride column="prefer_auxiliaries"
+                            javaType="top.sillyfan.auxiliaryplatform.domain.model.json.LongSet"
+                            typeHandler="top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.LongSetTypeHandler"/>
+
+            <columnOverride column="prefer_demanders"
+                            javaType="top.sillyfan.auxiliaryplatform.domain.model.json.LongSet"
+                            typeHandler="top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.LongSetTypeHandler"/>
+        </table>
+
+        <table tableName="t_user_task_link" domainObjectName="UserTaskLink"
+               enableCountByExample="true"
+               enableUpdateByExample="true"
+               enableDeleteByExample="true"
+               enableSelectByExample="true"
+               selectByExampleQueryId="false">
+
+            <property name="rootClass" value="top.sillyfan.auxiliaryplatform.domain.model.extend.UserTaskMore"/>
+
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+
+            <columnOverride column="status" javaType="java.lang.Integer"/>
+
+            <columnOverride column="create_time" javaType="org.joda.time.DateTime"
+                            typeHandler="top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler"/>
+            <columnOverride column="update_time" javaType="org.joda.time.DateTime"
                             typeHandler="top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler"/>
         </table>
 

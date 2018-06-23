@@ -2,6 +2,7 @@ package top.sillyfan.auxiliaryplatform.domain.api.page;
 
 import lombok.Builder;
 import lombok.Data;
+import org.apache.commons.collections.CollectionUtils;
 
 import java.util.Collections;
 import java.util.List;
@@ -17,10 +18,14 @@ public class Page<T> {
     private Integer page;
 
     public static <T> Page<T> empty(Integer page) {
-        return (Page<T>)Page.builder().elements(Collections.emptyList()).total(0).page(page).build();
+        return (Page<T>) Page.builder().elements(Collections.emptyList()).total(0).page(page).build();
     }
 
     public static <T> Page<T> of(List<T> elements, Integer page) {
         return Page.<T>builder().elements(elements).page(page).total(elements.size()).build();
+    }
+
+    public boolean hasContent() {
+        return CollectionUtils.isNotEmpty(elements);
     }
 }

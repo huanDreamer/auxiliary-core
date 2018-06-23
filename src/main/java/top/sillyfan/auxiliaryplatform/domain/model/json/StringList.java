@@ -1,6 +1,8 @@
 package top.sillyfan.auxiliaryplatform.domain.model.json;
 
 
+import org.apache.commons.collections.CollectionUtils;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -18,7 +20,9 @@ public class StringList extends ArrayList<String> {
     public static StringList of(Collection<String> list) {
         StringList strings = new StringList();
 
-        strings.addAll(list);
+        if (CollectionUtils.isNotEmpty(list)) {
+            strings.addAll(list);
+        }
 
         return strings;
     }

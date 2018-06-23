@@ -3,9 +3,6 @@ package top.sillyfan.auxiliaryplatform.domain.api;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import top.sillyfan.auxiliaryplatform.domain.api.page.PageRequest;
-
-import java.util.Optional;
 
 @Data
 @AllArgsConstructor
@@ -19,7 +16,4 @@ public class PagingConf {
 
     private Integer currentPage;
 
-    public static PageRequest pageRequest(Optional<Integer> page, Optional<Integer> pageSize) {
-        return PageRequest.of(page.orElse(DefaultPage) - 1, pageSize.orElse(DefaultPageSize));
-    }
 }

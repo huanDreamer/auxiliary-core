@@ -23,7 +23,7 @@ public class AccessTokenServiceImpl extends BaseServiceImpl<AccessToken, String,
 
         AccessTokenExample example = new AccessTokenExample();
 
-        example.createCriteria().andUseridEqualTo(userId).andTypeEqualTo(type).andExpireGreaterThan(DateTime.now());
+        example.createCriteria().andUserIdEqualTo(userId).andTypeEqualTo(type).andExpireGreaterThan(DateTime.now());
 
         return repository.countByExample(example);
     }

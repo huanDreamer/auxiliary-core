@@ -16,15 +16,20 @@ public class UserUtil {
      */
     public static User cleanInfo(User user) {
 
-        User u = new User();
+        user.setPassword(null);
 
-        u.setId(user.getId());
-        u.setEmail(user.getEmail());
-        u.setUsername(user.getUsername());
-        u.setQq(user.getQq());
-        u.setMark(user.getMark());
-        u.setPhone(user.getPhone());
+//        User u = new User();
+//
+//        u.setId(user.getId());
+//        u.setEmail(user.getEmail());
+//        u.setUsername(user.getUsername());
+//        u.setQq(user.getQq());
+//        u.setMark(user.getMark());
+//        u.setPhone(user.getPhone());
+//        u.setMaxTokenNum(user.getMaxTokenNum());
+//        u.setTaskStatus(user.getTaskStatus());
+//        u.setOnline(user.getOnline());
 
-        return u;
+        return user;
     }
 }
