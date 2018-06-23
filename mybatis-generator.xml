@@ -34,10 +34,10 @@
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
 
-        <javaClientGenerator targetPackage="top.sillyfan.auxiliaryplatform.domain.model.repository"
-                             targetProject="./src/main/java" type="XMLMAPPER">
-            <property name="enableSubPackages" value="false"/>
-        </javaClientGenerator>
+        <!--<javaClientGenerator targetPackage="top.sillyfan.auxiliaryplatform.domain.model.repository"-->
+                             <!--targetProject="./src/main/java" type="XMLMAPPER">-->
+            <!--<property name="enableSubPackages" value="false"/>-->
+        <!--</javaClientGenerator>-->
 
 
         <table tableName="t_user" domainObjectName="User"
@@ -58,7 +58,7 @@
             <columnOverride column="type" javaType="java.lang.Integer"/>
             <columnOverride column="taskStatus" javaType="java.lang.Integer"/>
             <columnOverride column="lastPasswordResetDate" javaType="org.joda.time.DateTime"
-                            typeHandler="top.sillyfan.dao.mybatis.typehandler.JodaDateTimeTypeHandler"/>
+                            typeHandler="top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler"/>
         </table>
 
     </context>

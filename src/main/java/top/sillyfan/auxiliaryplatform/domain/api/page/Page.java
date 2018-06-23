@@ -19,4 +19,8 @@ public class Page<T> {
     public static <T> Page<T> empty(Integer page) {
         return (Page<T>)Page.builder().elements(Collections.emptyList()).total(0).page(page).build();
     }
+
+    public static <T> Page<T> of(List<T> elements, Integer page) {
+        return Page.<T>builder().elements(elements).page(page).total(elements.size()).build();
+    }
 }

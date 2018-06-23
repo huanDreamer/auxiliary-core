@@ -2,6 +2,7 @@ package top.sillyfan.auxiliaryplatform.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.joda.time.DateTime;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,7 +23,7 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 public class JwtUser implements UserDetails {
 
-    private String id;
+    private Long id;
 
     private String username;
 
@@ -39,17 +40,17 @@ public class JwtUser implements UserDetails {
 
     private Integer type;
 
-    private String superUser;
+    private Long superUser;
 
     private List<String> authorities;
 
     private Integer status;
 
-    private Integer acceptTaskStatus;
+    private Integer taskStatus;
 
     private Integer online;
 
-    private Date lastPasswordResetDate;
+    private DateTime lastPasswordResetDate;
 
     @JsonIgnore
     @Override

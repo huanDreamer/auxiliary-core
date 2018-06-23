@@ -20,7 +20,7 @@
     <result column="authorizes" jdbcType="OTHER" property="authorizes" typeHandler="top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.StringListTypeHandler" />
     <result column="status" jdbcType="TINYINT" property="status" />
     <result column="taskStatus" jdbcType="TINYINT" property="taskstatus" />
-    <result column="lastPasswordResetDate" jdbcType="TIMESTAMP" property="lastpasswordresetdate" typeHandler="top.sillyfan.dao.mybatis.typehandler.JodaDateTimeTypeHandler" />
+    <result column="lastPasswordResetDate" jdbcType="TIMESTAMP" property="lastpasswordresetdate" typeHandler="top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler" />
     <result column="mark" jdbcType="VARCHAR" property="mark" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -76,15 +76,15 @@
                   and ${criterion.condition}
                 </when>
                 <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=top.sillyfan.dao.mybatis.typehandler.JodaDateTimeTypeHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler}
                 </when>
                 <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=top.sillyfan.dao.mybatis.typehandler.JodaDateTimeTypeHandler} and #{criterion.secondValue,typeHandler=top.sillyfan.dao.mybatis.typehandler.JodaDateTimeTypeHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler} and #{criterion.secondValue,typeHandler=top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler}
                 </when>
                 <when test="criterion.listValue">
                   and ${criterion.condition}
                   <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem,typeHandler=top.sillyfan.dao.mybatis.typehandler.JodaDateTimeTypeHandler}
+                    #{listItem,typeHandler=top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler}
                   </foreach>
                 </when>
               </choose>
@@ -147,15 +147,15 @@
                   and ${criterion.condition}
                 </when>
                 <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=top.sillyfan.dao.mybatis.typehandler.JodaDateTimeTypeHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler}
                 </when>
                 <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=top.sillyfan.dao.mybatis.typehandler.JodaDateTimeTypeHandler} and #{criterion.secondValue,typeHandler=top.sillyfan.dao.mybatis.typehandler.JodaDateTimeTypeHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler} and #{criterion.secondValue,typeHandler=top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler}
                 </when>
                 <when test="criterion.listValue">
                   and ${criterion.condition}
                   <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem,typeHandler=top.sillyfan.dao.mybatis.typehandler.JodaDateTimeTypeHandler}
+                    #{listItem,typeHandler=top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler}
                   </foreach>
                 </when>
               </choose>
@@ -190,6 +190,14 @@
     </if>
     <if test="orderByClause != null">
       order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
@@ -238,7 +246,7 @@
       #{email,jdbcType=VARCHAR}, #{qq,jdbcType=CHAR}, #{phone,jdbcType=CHAR}, #{type,jdbcType=TINYINT}, 
       #{online,jdbcType=TINYINT}, #{price,jdbcType=DECIMAL}, #{balance,jdbcType=DECIMAL}, 
       #{authorizes,jdbcType=OTHER,typeHandler=top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.StringListTypeHandler}, 
-      #{status,jdbcType=TINYINT}, #{taskstatus,jdbcType=TINYINT}, #{lastpasswordresetdate,jdbcType=TIMESTAMP,typeHandler=top.sillyfan.dao.mybatis.typehandler.JodaDateTimeTypeHandler}, 
+      #{status,jdbcType=TINYINT}, #{taskstatus,jdbcType=TINYINT}, #{lastpasswordresetdate,jdbcType=TIMESTAMP,typeHandler=top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler}, 
       #{mark,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="top.sillyfan.auxiliaryplatform.domain.model.User">
@@ -338,7 +346,7 @@
         #{taskstatus,jdbcType=TINYINT},
       </if>
       <if test="lastpasswordresetdate != null">
-        #{lastpasswordresetdate,jdbcType=TIMESTAMP,typeHandler=top.sillyfan.dao.mybatis.typehandler.JodaDateTimeTypeHandler},
+        #{lastpasswordresetdate,jdbcType=TIMESTAMP,typeHandler=top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler},
       </if>
       <if test="mark != null">
         #{mark,jdbcType=VARCHAR},
@@ -405,7 +413,7 @@
         taskStatus = #{record.taskstatus,jdbcType=TINYINT},
       </if>
       <if test="record.lastpasswordresetdate != null">
-        lastPasswordResetDate = #{record.lastpasswordresetdate,jdbcType=TIMESTAMP,typeHandler=top.sillyfan.dao.mybatis.typehandler.JodaDateTimeTypeHandler},
+        lastPasswordResetDate = #{record.lastpasswordresetdate,jdbcType=TIMESTAMP,typeHandler=top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler},
       </if>
       <if test="record.mark != null">
         mark = #{record.mark,jdbcType=VARCHAR},
@@ -435,7 +443,7 @@
       authorizes = #{record.authorizes,jdbcType=OTHER,typeHandler=top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.StringListTypeHandler},
       status = #{record.status,jdbcType=TINYINT},
       taskStatus = #{record.taskstatus,jdbcType=TINYINT},
-      lastPasswordResetDate = #{record.lastpasswordresetdate,jdbcType=TIMESTAMP,typeHandler=top.sillyfan.dao.mybatis.typehandler.JodaDateTimeTypeHandler},
+      lastPasswordResetDate = #{record.lastpasswordresetdate,jdbcType=TIMESTAMP,typeHandler=top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler},
       mark = #{record.mark,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -488,7 +496,7 @@
         taskStatus = #{taskstatus,jdbcType=TINYINT},
       </if>
       <if test="lastpasswordresetdate != null">
-        lastPasswordResetDate = #{lastpasswordresetdate,jdbcType=TIMESTAMP,typeHandler=top.sillyfan.dao.mybatis.typehandler.JodaDateTimeTypeHandler},
+        lastPasswordResetDate = #{lastpasswordresetdate,jdbcType=TIMESTAMP,typeHandler=top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler},
       </if>
       <if test="mark != null">
         mark = #{mark,jdbcType=VARCHAR},
@@ -515,7 +523,7 @@
       authorizes = #{authorizes,jdbcType=OTHER,typeHandler=top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.StringListTypeHandler},
       status = #{status,jdbcType=TINYINT},
       taskStatus = #{taskstatus,jdbcType=TINYINT},
-      lastPasswordResetDate = #{lastpasswordresetdate,jdbcType=TIMESTAMP,typeHandler=top.sillyfan.dao.mybatis.typehandler.JodaDateTimeTypeHandler},
+      lastPasswordResetDate = #{lastpasswordresetdate,jdbcType=TIMESTAMP,typeHandler=top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler},
       mark = #{mark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>

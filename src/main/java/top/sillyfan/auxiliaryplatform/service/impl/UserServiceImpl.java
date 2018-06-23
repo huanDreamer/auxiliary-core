@@ -3,6 +3,7 @@ package top.sillyfan.auxiliaryplatform.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+import top.sillyfan.auxiliaryplatform.common.BaseServiceImpl;
 import top.sillyfan.auxiliaryplatform.constants.UserDef;
 import top.sillyfan.auxiliaryplatform.domain.api.page.Page;
 import top.sillyfan.auxiliaryplatform.domain.api.page.PageRequest;
@@ -17,10 +18,19 @@ import java.util.Objects;
 import java.util.Optional;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends BaseServiceImpl<User, Long, UserMapper> implements UserService {
 
+    @Override
     @Autowired
-    UserMapper userMapper;
+    public void setRepository(UserMapper repository) {
+        super.setRepository(repository);
+    }
+
+    public User insert(User user) {
+        repository.insert(user);
+
+        return user;
+    }
 
     @Override
     public User findByUserName(String username) {
@@ -29,7 +39,7 @@ public class UserServiceImpl implements UserService {
 
         example.createCriteria().andUsernameEqualTo(username);
 
-        List<User> users = userMapper.selectByExample(example);
+        List<User> users = repository.selectByExample(example);
 
         if (CollectionUtils.isEmpty(users)) {
             return null;
@@ -50,7 +60,7 @@ public class UserServiceImpl implements UserService {
         }
 
         if (Objects.nonNull(user.getSuperuser())) {
-            User u1 = userMapper.selectByPrimaryKey(user.getSuperuser());
+            User u1 = repository.selectByPrimaryKey(user.getSuperuser());
 
             return getSuperUser(u1);
         }
@@ -64,7 +74,7 @@ public class UserServiceImpl implements UserService {
         UserExample example = new UserExample();
 
         example.createCriteria().andTypeEqualTo(type).andIdIn(ids);
-        return userMapper.selectByExample(example);
+        return repository.selectByExample(example);
     }
 
     @Override
@@ -73,7 +83,7 @@ public class UserServiceImpl implements UserService {
 
         example.createCriteria().andTypeEqualTo(type);
 
-        return userMapper.selectByExample(example);
+        return repository.selectByExample(example);
     }
 
     @Override
@@ -82,7 +92,7 @@ public class UserServiceImpl implements UserService {
 
         example.createCriteria().andTypeEqualTo(type).andIdIn(ids).andStatusEqualTo(status);
 
-        return userMapper.selectByExample(example);
+        return repository.selectByExample(example);
     }
 
     @Override
@@ -91,7 +101,7 @@ public class UserServiceImpl implements UserService {
 
         example.createCriteria().andSuperuserEqualTo(id);
 
-        return userMapper.selectByExample(example);
+        return repository.selectByExample(example);
     }
 
     @Override
@@ -100,7 +110,7 @@ public class UserServiceImpl implements UserService {
 
         example.createCriteria().andSuperuserIn(ids);
 
-        return userMapper.selectByExample(example);
+        return repository.selectByExample(example);
     }
 
     @Override
@@ -110,27 +120,59 @@ public class UserServiceImpl implements UserService {
 
         example.createCriteria().andTypeEqualTo(type).andUsernameLike(MybatisUtil.like(name));
 
-        int total = userMapper.countByExample(example);
+        return findByExampleWithPage(example, pageable);
+    }
 
-        if(total == 0) {
+    @Override
+    public Page<User> findByTypeAndIdNotInAndUsernameLike(Integer type, List<Long> ids, String name, PageRequest pageable) {
+
+        UserExample example = new UserExample();
+
+        example.createCriteria().andTypeEqualTo(type).andIdNotIn(ids).andUsernameLike(MybatisUtil.like(name));
+
+        return findByExampleWithPage(example, pageable);
+    }
+
+    @Override
+    public Page<User> findByOnlineAndTypeAndIdNotInAndUsernameLike(Integer onLine, Integer type, List<Long> ids, String name, PageRequest pageable) {
+
+        UserExample example = new UserExample();
+
+        example.createCriteria().andOnlineEqualTo(onLine).andTypeEqualTo(type).andIdNotIn(ids).andUsernameLike(MybatisUtil.like(name));
+
+        return findByExampleWithPage(example, pageable);
+    }
+
+    @Override
+    public Page<User> findBySuperUserAndUsernameLike(Long id, String name, PageRequest pageable) {
+
+        UserExample example = new UserExample();
+
+        example.createCriteria().andSuperuserEqualTo(id).andUsernameLike(MybatisUtil.like(name));
+
+        return findByExampleWithPage(example, pageable);
+    }
+
+    /**
+     * 使用example查询并且分页
+     *
+     * @param example  example
+     * @param pageable 分页参数
+     * @return
+     */
+    private Page<User> findByExampleWithPage(UserExample example, PageRequest pageable) {
+
+        int total = repository.countByExample(example);
+
+        if (total == 0) {
             return Page.empty(pageable.getPage());
         }
 
-        return null;
-    }
+        example.setOffset(pageable.getOffset());
+        example.setLimit(pageable.getLimit());
 
-    @Override
-    public Page<User> findByTypeAndIdNotInAndUsernameLike(Integer type, List<String> ids, String name, PageRequest pageable) {
-        return null;
-    }
+        List<User> users = repository.selectByExample(example);
 
-    @Override
-    public Page<User> findByOnlineAndTypeAndIdNotInAndUsernameLike(Integer onLine, Integer type, List<String> ids, String name, PageRequest pageable) {
-        return null;
-    }
-
-    @Override
-    public Page<User> findBySuperUserAndUsernameLike(String id, String name, PageRequest pageable) {
-        return null;
+        return Page.of(users, pageable.getPage());
     }
 }
