@@ -42,10 +42,10 @@ public class UserTaskLinkServiceImpl extends BaseServiceImpl<UserTaskLink, Long,
             criteria.andUserIdIn(userIds);
         }
         if (Objects.nonNull(from)) {
-            criteria.andCreateTimeLessThanOrEqualTo(from);
+            criteria.andCreateTimeGreaterThan(from);
         }
         if (Objects.nonNull(to)) {
-            criteria.andCreateTimeGreaterThanOrEqualTo(to);
+            criteria.andCreateTimeLessThanOrEqualTo(to);
         }
 
         return repository.selectByExample(example);
@@ -65,10 +65,10 @@ public class UserTaskLinkServiceImpl extends BaseServiceImpl<UserTaskLink, Long,
             criteria.andTaskIdIn(taskIds);
         }
         if (Objects.nonNull(from)) {
-            criteria.andCreateTimeLessThanOrEqualTo(from);
+            criteria.andCreateTimeGreaterThanOrEqualTo(from);
         }
         if (Objects.nonNull(to)) {
-            criteria.andCreateTimeGreaterThanOrEqualTo(to);
+            criteria.andCreateTimeLessThanOrEqualTo(to);
         }
 
         int total = repository.countByExample(example);
@@ -82,7 +82,7 @@ public class UserTaskLinkServiceImpl extends BaseServiceImpl<UserTaskLink, Long,
 
         List<UserTaskLink> userTaskLinks = repository.selectByExample(example);
 
-        return Page.of(userTaskLinks, pageable.getPage());
+        return Page.of(userTaskLinks, pageable.getPage(), total);
     }
 
     @Override

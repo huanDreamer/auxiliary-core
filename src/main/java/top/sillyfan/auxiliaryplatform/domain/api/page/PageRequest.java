@@ -21,8 +21,8 @@ public class PageRequest {
     private Integer page;
 
     public static PageRequest of(Optional<Integer> page, Optional<Integer> pageSize) {
-        Integer _page = page.orElse(1);
-        Integer _pageSize = page.orElse(1);
+        Integer _page = page.orElse(DefaultPage);
+        Integer _pageSize = pageSize.orElse(DefaultPageSize);
         return new PageRequest(_pageSize * (_page - 1), _pageSize, _page);
     }
 }

@@ -232,6 +232,6 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long, UserMapper> imp
 
         List<User> users = repository.selectByExample(example);
 
-        return Page.of(users, pageable.getPage());
+        return Page.of(users, pageable.getPage(), total);
     }
 }

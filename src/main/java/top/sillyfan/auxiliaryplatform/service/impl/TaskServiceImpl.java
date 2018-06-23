@@ -200,6 +200,6 @@ public class TaskServiceImpl extends BaseServiceImpl<Task, Long, TaskMapper> imp
 
         List<Task> tasks = repository.selectByExample(example);
 
-        return Page.of(tasks, pageable.getPage());
+        return Page.of(tasks, pageable.getPage(), total);
     }
 }

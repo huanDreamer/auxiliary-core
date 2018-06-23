@@ -53,7 +53,7 @@ public class SettlementServiceImpl extends BaseServiceImpl<Settlement, Long, Set
 
         List<Settlement> settlements = repository.selectByExample(example);
 
-        return Page.of(settlements, pageRequest.getPage());
+        return Page.of(settlements, pageRequest.getPage(), total);
     }
 
     @Transactional(readOnly = true)
@@ -75,7 +75,7 @@ public class SettlementServiceImpl extends BaseServiceImpl<Settlement, Long, Set
 
         List<Settlement> settlements = repository.selectByExample(example);
 
-        return Page.of(settlements, pageRequest.getPage());
+        return Page.of(settlements, pageRequest.getPage(), total);
     }
 
     @Transactional(readOnly = true)

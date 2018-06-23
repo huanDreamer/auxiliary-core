@@ -88,7 +88,7 @@ public class AccessServiceImpl extends BaseServiceImpl<Access, Long, AccessMappe
 
         List<Access> result = repository.selectByExample(example);
 
-        return Page.of(result, pageable.getPage());
+        return Page.of(result, pageable.getPage(), total);
     }
 
     @Override
