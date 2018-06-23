@@ -806,6 +806,66 @@ public class UserExample {
             return (Criteria) this;
         }
 
+        public Criteria andMaxtokennumIsNull() {
+            addCriterion("maxTokenNum is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxtokennumIsNotNull() {
+            addCriterion("maxTokenNum is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxtokennumEqualTo(Integer value) {
+            addCriterion("maxTokenNum =", value, "maxtokennum");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxtokennumNotEqualTo(Integer value) {
+            addCriterion("maxTokenNum <>", value, "maxtokennum");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxtokennumGreaterThan(Integer value) {
+            addCriterion("maxTokenNum >", value, "maxtokennum");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxtokennumGreaterThanOrEqualTo(Integer value) {
+            addCriterion("maxTokenNum >=", value, "maxtokennum");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxtokennumLessThan(Integer value) {
+            addCriterion("maxTokenNum <", value, "maxtokennum");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxtokennumLessThanOrEqualTo(Integer value) {
+            addCriterion("maxTokenNum <=", value, "maxtokennum");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxtokennumIn(List<Integer> values) {
+            addCriterion("maxTokenNum in", values, "maxtokennum");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxtokennumNotIn(List<Integer> values) {
+            addCriterion("maxTokenNum not in", values, "maxtokennum");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxtokennumBetween(Integer value1, Integer value2) {
+            addCriterion("maxTokenNum between", value1, value2, "maxtokennum");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxtokennumNotBetween(Integer value1, Integer value2) {
+            addCriterion("maxTokenNum not between", value1, value2, "maxtokennum");
+            return (Criteria) this;
+        }
+
         public Criteria andOnlineIsNull() {
             addCriterion("online is null");
             return (Criteria) this;

@@ -6,6 +6,7 @@ import top.sillyfan.auxiliaryplatform.domain.api.page.PageRequest;
 import top.sillyfan.auxiliaryplatform.domain.model.User;
 import top.sillyfan.auxiliaryplatform.domain.model.repository.UserMapper;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 

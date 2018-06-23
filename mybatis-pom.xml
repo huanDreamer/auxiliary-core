@@ -46,7 +46,7 @@
 		<mybatis.generator.jdbcPassword>djuey2eh8u</mybatis.generator.jdbcPassword>
 
 		<mybatis.generator.tableNames>
-			t_user
+			t_access_token, t_user
 		</mybatis.generator.tableNames>
 
 	</properties>

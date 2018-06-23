@@ -6,7 +6,7 @@
     <classPathEntry location="./target/dependency/mysql-connector-java-5.1.34.jar"/>
 
     <context id="context1" defaultModelType="flat" targetRuntime="MyBatis3">
-        
+
         <plugin type="top.sillyfan.auxiliaryplatform.dao.MySQLLimitPlugin"/>
 
         <commentGenerator>
@@ -35,8 +35,8 @@
         </sqlMapGenerator>
 
         <!--<javaClientGenerator targetPackage="top.sillyfan.auxiliaryplatform.domain.model.repository"-->
-                             <!--targetProject="./src/main/java" type="XMLMAPPER">-->
-            <!--<property name="enableSubPackages" value="false"/>-->
+        <!--targetProject="./src/main/java" type="XMLMAPPER">-->
+        <!--<property name="enableSubPackages" value="false"/>-->
         <!--</javaClientGenerator>-->
 
 
@@ -58,6 +58,73 @@
             <columnOverride column="type" javaType="java.lang.Integer"/>
             <columnOverride column="taskStatus" javaType="java.lang.Integer"/>
             <columnOverride column="lastPasswordResetDate" javaType="org.joda.time.DateTime"
+                            typeHandler="top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler"/>
+        </table>
+
+        <table tableName="t_access_token" domainObjectName="AccessToken"
+               enableCountByExample="true"
+               enableUpdateByExample="true"
+               enableDeleteByExample="true"
+               enableSelectByExample="true"
+               selectByExampleQueryId="false">
+
+            <columnOverride column="type" javaType="java.lang.Integer"/>
+
+            <columnOverride column="expire" javaType="org.joda.time.DateTime"
+                            typeHandler="top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler"/>
+        </table>
+
+        <table tableName="t_access" domainObjectName="Access"
+               enableCountByExample="true"
+               enableUpdateByExample="true"
+               enableDeleteByExample="true"
+               enableSelectByExample="true"
+               selectByExampleQueryId="false">
+
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+
+            <columnOverride column="status" javaType="java.lang.Integer"/>
+
+            <columnOverride column="createTime" javaType="org.joda.time.DateTime"
+                            typeHandler="top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler"/>
+            <columnOverride column="updateTime" javaType="org.joda.time.DateTime"
+                            typeHandler="top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler"/>
+        </table>
+
+        <table tableName="t_settlement" domainObjectName="Settlement"
+               enableCountByExample="true"
+               enableUpdateByExample="true"
+               enableDeleteByExample="true"
+               enableSelectByExample="true"
+               selectByExampleQueryId="false">
+
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+
+            <columnOverride column="userType" javaType="java.lang.Integer"/>
+
+            <columnOverride column="updateTime" javaType="org.joda.time.DateTime"
+                            typeHandler="top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler"/>
+        </table>
+
+        <table tableName="t_task" domainObjectName="Task"
+               enableCountByExample="true"
+               enableUpdateByExample="true"
+               enableDeleteByExample="true"
+               enableSelectByExample="true"
+               selectByExampleQueryId="false">
+
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+
+            <columnOverride column="status" javaType="java.lang.Integer"/>
+
+            <columnOverride column="price" javaType="java.math.BigDecimal"/>
+
+            <columnOverride column="expire" javaType="org.joda.time.DateTime"
+                            typeHandler="top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler"/>
+            
+            <columnOverride column="createTime" javaType="org.joda.time.DateTime"
+                            typeHandler="top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler"/>
+            <columnOverride column="updateTime" javaType="org.joda.time.DateTime"
                             typeHandler="top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler"/>
         </table>
 
