@@ -2,16 +2,13 @@ package top.sillyfan.auxiliaryplatform.domain.model.extend;
 
 import lombok.Data;
 import org.joda.time.DateTime;
-import org.springframework.data.annotation.Transient;
 import top.sillyfan.auxiliaryplatform.domain.model.Settlement;
 
 @Data
 public abstract class SettlementMore {
 
-    @Transient
     private String auxiliaryName;
 
-    @Transient
     private String demanderName;
 
     public static Settlement build(Long auxiliaryId, Integer userType, Long demanderId) {
