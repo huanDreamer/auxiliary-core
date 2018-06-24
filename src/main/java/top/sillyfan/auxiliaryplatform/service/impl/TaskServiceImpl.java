@@ -1,5 +1,6 @@
 package top.sillyfan.auxiliaryplatform.service.impl;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Service
+@Slf4j
 public class TaskServiceImpl extends BaseServiceImpl<Task, Long, TaskMapper> implements TaskService {
 
     @Autowired
@@ -204,4 +206,58 @@ public class TaskServiceImpl extends BaseServiceImpl<Task, Long, TaskMapper> imp
 
         return Page.of(tasks, pageable.getPage(), total);
     }
+
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void taskExpire(Long taskId) {
+
+        // 查找task
+        Task task = super.findOne(taskId);
+
+        if (Objects.isNull(task)) {
+            log.error("未找到task: {}", taskId);
+            return;
+        }
+
+        TaskDef.TaskStatusEnum status = TaskDef.TaskStatusEnum.from(task.getStatus());
+
+        // 新建状态。表示没有人领取，直接过期
+        if (status.equals(TaskDef.TaskStatusEnum.Enabled)) {
+            task.setStatus(TaskDef.TaskStatusEnum.Expire.getCode());
+            task.setUpdateTime(DateTime.now());
+
+            addBalance(task);
+            return;
+        }
+
+        // 暂停和冻结不处理
+
+        // 进行中 -> 异常结束
+        if (status.equals(TaskDef.TaskStatusEnum.Conducting)) {
+            task.setStatus(TaskDef.TaskStatusEnum.Exception.getCode());
+            task.setUpdateTime(DateTime.now());
+
+            // 用户任务link表进行设置
+            userTaskLinkService.findByTaskId(taskId).ifPresent(userTaskLink -> {
+                userTaskLink.setStatus(TaskDef.TaskStatusEnum.Exception.getCode());
+                userTaskLink.setUpdateTime(DateTime.now());
+            });
+
+            addBalance(task);
+
+            this.update(task);
+            return;
+        }
+    }
+
+    private void addBalance(Task task) {
+        // 用户的余额加回来
+        User demander = userService.findOne(task.getDemanderId());
+
+        demander.setBalance(demander.getBalance().add(task.getPrice()));
+
+        userService.update(demander);
+    }
+
 }

@@ -26,4 +26,11 @@ public interface TaskService extends BaseService<Task, Long, TaskMapper> {
     Long complateTask(Task task, UserTaskLink userTaskLink);
 
     Long userComplateTask(Task task, UserTaskLink userTaskLink);
+
+    /**
+     * 任务过期设置
+     *
+     * @param taskId
+     */
+    void taskExpire(Long taskId);
 }

@@ -7,7 +7,7 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum RabbitMqQueue {
 
-    MQ_Test("delay_exchange", "task", "task");
+    Task("delay_exchange", "task", "task");
 
 
     private String exchanges;
