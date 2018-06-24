@@ -47,6 +47,7 @@
 
 		<mybatis.generator.tableNames>
 			<!--t_user,t_user_task_link,t_user_config,t_task,t_settlement,t_access-->
+			t_user
 		</mybatis.generator.tableNames>
 
 	</properties>

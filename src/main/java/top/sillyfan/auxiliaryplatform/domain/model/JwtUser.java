@@ -40,7 +40,9 @@ public class JwtUser implements UserDetails {
 
     private Integer type;
 
-    private Integer maxtokennum;
+    private Integer maxTokenNum;
+
+    private Integer maxThreadNum;
 
     private Long superUser;
 

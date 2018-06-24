@@ -866,6 +866,66 @@ public class UserExample {
             return (Criteria) this;
         }
 
+        public Criteria andMaxThreadNumIsNull() {
+            addCriterion("max_thread_num is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxThreadNumIsNotNull() {
+            addCriterion("max_thread_num is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxThreadNumEqualTo(Integer value) {
+            addCriterion("max_thread_num =", value, "maxThreadNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxThreadNumNotEqualTo(Integer value) {
+            addCriterion("max_thread_num <>", value, "maxThreadNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxThreadNumGreaterThan(Integer value) {
+            addCriterion("max_thread_num >", value, "maxThreadNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxThreadNumGreaterThanOrEqualTo(Integer value) {
+            addCriterion("max_thread_num >=", value, "maxThreadNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxThreadNumLessThan(Integer value) {
+            addCriterion("max_thread_num <", value, "maxThreadNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxThreadNumLessThanOrEqualTo(Integer value) {
+            addCriterion("max_thread_num <=", value, "maxThreadNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxThreadNumIn(List<Integer> values) {
+            addCriterion("max_thread_num in", values, "maxThreadNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxThreadNumNotIn(List<Integer> values) {
+            addCriterion("max_thread_num not in", values, "maxThreadNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxThreadNumBetween(Integer value1, Integer value2) {
+            addCriterion("max_thread_num between", value1, value2, "maxThreadNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andMaxThreadNumNotBetween(Integer value1, Integer value2) {
+            addCriterion("max_thread_num not between", value1, value2, "maxThreadNum");
+            return (Criteria) this;
+        }
+
         public Criteria andOnlineIsNull() {
             addCriterion("online is null");
             return (Criteria) this;
