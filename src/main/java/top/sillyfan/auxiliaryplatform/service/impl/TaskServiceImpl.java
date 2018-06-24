@@ -228,6 +228,9 @@ public class TaskServiceImpl extends BaseServiceImpl<Task, Long, TaskMapper> imp
             task.setUpdateTime(DateTime.now());
 
             addBalance(task);
+
+            this.update(task);
+
             return;
         }
 
