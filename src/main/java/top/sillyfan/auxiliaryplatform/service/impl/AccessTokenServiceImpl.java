@@ -3,6 +3,7 @@ package top.sillyfan.auxiliaryplatform.service.impl;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import top.sillyfan.auxiliaryplatform.common.BaseServiceImpl;
 import top.sillyfan.auxiliaryplatform.domain.model.AccessToken;
 import top.sillyfan.auxiliaryplatform.domain.model.AccessTokenExample;
@@ -19,6 +20,7 @@ public class AccessTokenServiceImpl extends BaseServiceImpl<AccessToken, String,
     }
 
     @Override
+    @Transactional(readOnly = true)
     public int countByUserIdAndType(Long userId, Integer type) {
 
         AccessTokenExample example = new AccessTokenExample();

@@ -51,6 +51,8 @@ public class SettlementServiceImpl extends BaseServiceImpl<Settlement, Long, Set
         example.setOffset(pageRequest.getOffset());
         example.setLimit(pageRequest.getLimit());
 
+        example.setOrderByClause("id desc");
+
         List<Settlement> settlements = repository.selectByExample(example);
 
         return Page.of(settlements, pageRequest.getPage(), total);
@@ -72,6 +74,8 @@ public class SettlementServiceImpl extends BaseServiceImpl<Settlement, Long, Set
 
         example.setOffset(pageRequest.getOffset());
         example.setLimit(pageRequest.getLimit());
+
+        example.setOrderByClause("id desc");
 
         List<Settlement> settlements = repository.selectByExample(example);
 
@@ -129,6 +133,7 @@ public class SettlementServiceImpl extends BaseServiceImpl<Settlement, Long, Set
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void reduceSettlement(Long auxiliaryId, Long demanderId, Integer num) {
         // 查找当前用户和客户的结算信息
         Settlement currentSettlement = this.findByAuxiliaryIdAndDemanderId(auxiliaryId, demanderId)

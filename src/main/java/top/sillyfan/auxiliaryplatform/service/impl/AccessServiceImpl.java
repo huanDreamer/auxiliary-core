@@ -67,6 +67,8 @@ public class AccessServiceImpl extends BaseServiceImpl<Access, Long, AccessMappe
             criteria.andAuxiliaryIdIn(auxiliaryIds);
         }
 
+        example.setOrderByClause("id desc");
+
         return repository.selectByExample(example);
     }
 
@@ -85,6 +87,8 @@ public class AccessServiceImpl extends BaseServiceImpl<Access, Long, AccessMappe
 
         example.setOffset(pageable.getOffset());
         example.setLimit(pageable.getLimit());
+
+        example.setOrderByClause("id desc");
 
         List<Access> result = repository.selectByExample(example);
 

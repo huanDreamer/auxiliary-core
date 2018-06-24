@@ -3,6 +3,7 @@ package top.sillyfan.auxiliaryplatform.service.impl;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 import top.sillyfan.auxiliaryplatform.common.BaseServiceImpl;
 import top.sillyfan.auxiliaryplatform.domain.api.page.Page;
@@ -26,6 +27,7 @@ public class UserTaskLinkServiceImpl extends BaseServiceImpl<UserTaskLink, Long,
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<UserTaskLink> findTasks(List<Long> taskIds, Integer status, List<Long> userIds, DateTime from, DateTime to) {
 
         UserTaskLinkExample example = new UserTaskLinkExample();
@@ -48,10 +50,13 @@ public class UserTaskLinkServiceImpl extends BaseServiceImpl<UserTaskLink, Long,
             criteria.andCreateTimeLessThanOrEqualTo(to);
         }
 
+        example.setOrderByClause("id desc");
+
         return repository.selectByExample(example);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Page<UserTaskLink> findTasksWithPage(List<Long> userIds, List<Long> taskIds, DateTime from, DateTime to, PageRequest pageable) {
 
         UserTaskLinkExample example = new UserTaskLinkExample();
@@ -80,12 +85,15 @@ public class UserTaskLinkServiceImpl extends BaseServiceImpl<UserTaskLink, Long,
         example.setOffset(pageable.getOffset());
         example.setLimit(pageable.getLimit());
 
+        example.setOrderByClause("id desc");
+
         List<UserTaskLink> userTaskLinks = repository.selectByExample(example);
 
         return Page.of(userTaskLinks, pageable.getPage(), total);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Optional<UserTaskLink> findByTaskId(Long taskId) {
 
         UserTaskLinkExample example = new UserTaskLinkExample();

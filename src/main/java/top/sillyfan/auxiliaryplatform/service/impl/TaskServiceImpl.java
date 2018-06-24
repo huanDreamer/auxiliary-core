@@ -198,6 +198,8 @@ public class TaskServiceImpl extends BaseServiceImpl<Task, Long, TaskMapper> imp
         example.setOffset(pageable.getOffset());
         example.setLimit(pageable.getLimit());
 
+        example.setOrderByClause("id desc");
+
         List<Task> tasks = repository.selectByExample(example);
 
         return Page.of(tasks, pageable.getPage(), total);

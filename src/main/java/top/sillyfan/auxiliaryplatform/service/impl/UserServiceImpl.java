@@ -4,6 +4,7 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import top.sillyfan.auxiliaryplatform.common.BaseServiceImpl;
 import top.sillyfan.auxiliaryplatform.constants.UserDef;
 import top.sillyfan.auxiliaryplatform.domain.api.page.Page;
@@ -34,11 +35,14 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long, UserMapper> imp
     }
 
     @Override
+    @Transactional(readOnly = true)
     public User findByUserName(String username) {
 
         UserExample example = new UserExample();
 
         example.createCriteria().andUsernameEqualTo(username);
+
+        example.setOrderByClause("id desc");
 
         List<User> users = repository.selectByExample(example);
 
@@ -50,6 +54,7 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long, UserMapper> imp
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Optional<User> getSuperUser(User user) {
 
         if (Objects.isNull(user)) {
@@ -70,6 +75,7 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long, UserMapper> imp
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<User> findByTypeAndIdIn(Integer type, List<Long> ids) {
 
         UserExample example = new UserExample();
@@ -86,6 +92,7 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long, UserMapper> imp
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<User> findByType(Integer type) {
         UserExample example = new UserExample();
 
@@ -94,11 +101,11 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long, UserMapper> imp
         if (Objects.nonNull(type)) {
             criteria.andTypeEqualTo(type);
         }
-
         return repository.selectByExample(example);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<User> findByTypeAndStatusAndIdIn(Integer type, Integer status, List<Long> ids) {
         UserExample example = new UserExample();
 
@@ -117,6 +124,7 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long, UserMapper> imp
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<User> findBySuperUser(Long id) {
         UserExample example = new UserExample();
 
@@ -127,6 +135,7 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long, UserMapper> imp
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<User> findBySuperUserIn(List<Long> ids) {
         UserExample example = new UserExample();
 
@@ -137,6 +146,7 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long, UserMapper> imp
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Page<User> findByTypeAndUsernameLike(Integer type, String name, PageRequest pageable) {
 
         UserExample example = new UserExample();
@@ -148,11 +158,11 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long, UserMapper> imp
         if (StringUtils.isNotBlank(name)) {
             criteria.andUsernameLike(MybatisUtil.like(name));
         }
-
         return findByExampleWithPage(example, pageable);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Page<User> findByTypeAndIdNotInAndUsernameLike(Integer type, List<Long> ids, String name, PageRequest pageable) {
 
         UserExample example = new UserExample();
@@ -168,11 +178,11 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long, UserMapper> imp
         if (StringUtils.isNotBlank(name)) {
             criteria.andUsernameLike(MybatisUtil.like(name));
         }
-
         return findByExampleWithPage(example, pageable);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Page<User> findByOnlineAndTypeAndIdNotInAndUsernameLike(Integer onLine, Integer type, List<Long> ids, String name, PageRequest pageable) {
 
         UserExample example = new UserExample();
@@ -196,6 +206,7 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long, UserMapper> imp
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Page<User> findBySuperUserAndUsernameLike(Long id, String name, PageRequest pageable) {
 
         UserExample example = new UserExample();
@@ -208,7 +219,6 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long, UserMapper> imp
         if (StringUtils.isNotBlank(name)) {
             criteria.andUsernameLike(MybatisUtil.like(name));
         }
-
         return findByExampleWithPage(example, pageable);
     }
 
@@ -229,6 +239,8 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long, UserMapper> imp
 
         example.setOffset(pageable.getOffset());
         example.setLimit(pageable.getLimit());
+
+        example.setOrderByClause("id desc");
 
         List<User> users = repository.selectByExample(example);
 

@@ -3,6 +3,7 @@ package top.sillyfan.auxiliaryplatform.service.impl;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import top.sillyfan.auxiliaryplatform.common.BaseServiceImpl;
 import top.sillyfan.auxiliaryplatform.domain.model.UserConfig;
 import top.sillyfan.auxiliaryplatform.domain.model.UserConfigExample;
@@ -22,6 +23,7 @@ public class UserConfigServiceImpl extends BaseServiceImpl<UserConfig, Long, Use
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Optional<UserConfig> getByUserId(Long userId) {
         UserConfigExample example = new UserConfigExample();
 
