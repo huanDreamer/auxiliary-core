@@ -234,7 +234,11 @@ public class TaskServiceImpl extends BaseServiceImpl<Task, Long, TaskMapper> imp
             return;
         }
 
-        // 暂停和冻结不处理
+        // 暂停和冻结：任务状态不变，但是把钱加回来
+        if(status.equals(TaskDef.TaskStatusEnum.Disabled) || status.equals(TaskDef.TaskStatusEnum.Frozen)) {
+            addBalance(task);
+            return;
+        }
 
         // 进行中 -> 异常结束
         if (status.equals(TaskDef.TaskStatusEnum.Conducting)) {
