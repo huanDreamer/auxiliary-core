@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -37,7 +38,7 @@ public class PrincipalUtil {
                 .username((String) map.get("username"))
                 .email((String) map.get("email"))
                 .type((Integer) map.get("type"))
-                .superUser(Long.valueOf((Integer) map.get("superUser")))
+                .superUser(Optional.ofNullable((Integer) map.get("superUser")).map(Long::valueOf).orElse(null))
                 .authorities((ArrayList) collect)
                 .status((Integer) map.get("status")).build();
     }
