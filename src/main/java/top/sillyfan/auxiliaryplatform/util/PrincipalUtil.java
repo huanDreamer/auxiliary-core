@@ -33,11 +33,11 @@ public class PrincipalUtil {
         Object collect = ((ArrayList) (map.get("authorities"))).stream().map(m -> ((HashMap) m).get("authority")).map(Object::toString).collect(Collectors.toList());
 
         return JwtUser.builder()
-                .id(Long.valueOf((Integer)map.get("id")))
+                .id(Long.valueOf((Integer) map.get("id")))
                 .username((String) map.get("username"))
                 .email((String) map.get("email"))
                 .type((Integer) map.get("type"))
-                .superUser((Long) map.get("superUser"))
+                .superUser(Long.valueOf((Integer) map.get("superUser")))
                 .authorities((ArrayList) collect)
                 .status((Integer) map.get("status")).build();
     }
