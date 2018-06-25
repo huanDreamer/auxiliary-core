@@ -38,10 +38,10 @@ public class AccessServiceImpl extends BaseServiceImpl<Access, Long, AccessMappe
         AccessExample example = new AccessExample();
 
         AccessExample.Criteria criteria = example.createCriteria();
-        if(Objects.nonNull(demanderId)) {
+        if (Objects.nonNull(demanderId)) {
             criteria.andDemanderIdEqualTo(demanderId);
         }
-        if(Objects.nonNull(auxiliaryId)) {
+        if (Objects.nonNull(auxiliaryId)) {
             criteria.andAuxiliaryIdEqualTo(auxiliaryId);
         }
 
@@ -105,7 +105,7 @@ public class AccessServiceImpl extends BaseServiceImpl<Access, Long, AccessMappe
 
         if (AccessDef.AccessStatusEnum.Access.match(status)) {
             // 用户对接更新
-            UserConfig auxiliaryConfig = userConfigService.findOne(auxiliary.getId());
+            UserConfig auxiliaryConfig = userConfigService.getByUserId(auxiliary.getId()).orElse(null);
 
             Boolean createAuxiliaryConfig = Objects.isNull(auxiliaryConfig);
 
@@ -118,14 +118,14 @@ public class AccessServiceImpl extends BaseServiceImpl<Access, Long, AccessMappe
             }
             auxiliaryConfig.getPreferDemanders().add(access.getDemanderId());
 
-            if(createAuxiliaryConfig) {
+            if (createAuxiliaryConfig) {
                 userConfigService.create(auxiliaryConfig);
             } else {
                 userConfigService.update(auxiliaryConfig);
             }
 
             // 客户对接更新
-            UserConfig demanderConfig = userConfigService.findOne(demander.getId());
+            UserConfig demanderConfig = userConfigService.getByUserId(demander.getId()).orElse(null);
 
             Boolean createDemanderConfig = Objects.isNull(demanderConfig);
 
@@ -138,7 +138,7 @@ public class AccessServiceImpl extends BaseServiceImpl<Access, Long, AccessMappe
             }
             demanderConfig.getPreferAuxiliaries().add(access.getAuxiliaryId());
 
-            if(createDemanderConfig) {
+            if (createDemanderConfig) {
                 userConfigService.create(demanderConfig);
             } else {
                 userConfigService.update(demanderConfig);
@@ -147,7 +147,7 @@ public class AccessServiceImpl extends BaseServiceImpl<Access, Long, AccessMappe
 
         if (AccessDef.AccessStatusEnum.Reject.match(status)) {
             // 用户对接更新
-            UserConfig auxiliaryConfig = userConfigService.findOne(auxiliary.getId());
+            UserConfig auxiliaryConfig = userConfigService.getByUserId(auxiliary.getId()).orElse(null);
 
             Boolean createAuxiliaryConfig = Objects.isNull(auxiliaryConfig);
 
@@ -157,7 +157,7 @@ public class AccessServiceImpl extends BaseServiceImpl<Access, Long, AccessMappe
             if (CollectionUtils.isNotEmpty(auxiliaryConfig.getPreferDemanders())) {
                 auxiliaryConfig.getPreferDemanders().remove(access.getDemanderId());
 
-                if(createAuxiliaryConfig) {
+                if (createAuxiliaryConfig) {
                     userConfigService.create(auxiliaryConfig);
                 } else {
                     userConfigService.update(auxiliaryConfig);
@@ -165,7 +165,7 @@ public class AccessServiceImpl extends BaseServiceImpl<Access, Long, AccessMappe
             }
 
             // 客户对接更新
-            UserConfig demanderConfig = userConfigService.findOne(demander.getId());
+            UserConfig demanderConfig = userConfigService.getByUserId(demander.getId()).orElse(null);
 
             Boolean createDemanderConfig = Objects.isNull(demanderConfig);
 
@@ -176,7 +176,7 @@ public class AccessServiceImpl extends BaseServiceImpl<Access, Long, AccessMappe
 
                 demanderConfig.getPreferAuxiliaries().remove(access.getAuxiliaryId());
 
-                if(createDemanderConfig) {
+                if (createDemanderConfig) {
                     userConfigService.create(demanderConfig);
                 } else {
                     userConfigService.update(demanderConfig);
