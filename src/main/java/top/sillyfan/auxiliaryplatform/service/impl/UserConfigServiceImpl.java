@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import top.sillyfan.auxiliaryplatform.common.BaseServiceImpl;
+import top.sillyfan.auxiliaryplatform.domain.model.JwtUser;
 import top.sillyfan.auxiliaryplatform.domain.model.UserConfig;
 import top.sillyfan.auxiliaryplatform.domain.model.UserConfigExample;
 import top.sillyfan.auxiliaryplatform.domain.model.repository.UserConfigMapper;
@@ -36,5 +37,24 @@ public class UserConfigServiceImpl extends BaseServiceImpl<UserConfig, Long, Use
         }
 
         return Optional.of(userConfigs.get(0));
+    }
+
+    @Override
+    public void removePrefer(JwtUser operator, Long userId) {
+
+        this.getByUserId(operator.getId()).ifPresent(userConfig -> {
+
+            if (operator.isDemander()
+                    && CollectionUtils.isNotEmpty(userConfig.getPreferAuxiliaries())) {
+                userConfig.getPreferAuxiliaries().remove(userId);
+            }
+
+            if (operator.isSuperAuxiliary()
+                    && CollectionUtils.isNotEmpty(userConfig.getPreferDemanders())) {
+                userConfig.getPreferDemanders().remove(userId);
+            }
+
+            super.update(userConfig);
+        });
     }
 }
