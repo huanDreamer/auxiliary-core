@@ -39,6 +39,7 @@ public class UserConfigServiceImpl extends BaseServiceImpl<UserConfig, Long, Use
         return Optional.of(userConfigs.get(0));
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public void removePrefer(JwtUser operator, Long userId) {
 
