@@ -48,11 +48,25 @@ public class UserConfigServiceImpl extends BaseServiceImpl<UserConfig, Long, Use
             if (operator.isDemander()
                     && CollectionUtils.isNotEmpty(userConfig.getPreferAuxiliaries())) {
                 userConfig.getPreferAuxiliaries().remove(userId);
+
+                this.getByUserId(userId).ifPresent(auxiliaryConfig -> {
+                    if (CollectionUtils.isNotEmpty(auxiliaryConfig.getPreferDemanders())) {
+                        auxiliaryConfig.getPreferDemanders().remove(operator.getId());
+                        this.update(auxiliaryConfig);
+                    }
+                });
             }
 
             if (operator.isSuperAuxiliary()
                     && CollectionUtils.isNotEmpty(userConfig.getPreferDemanders())) {
                 userConfig.getPreferDemanders().remove(userId);
+
+                this.getByUserId(userId).ifPresent(demanderConfig -> {
+                    if (CollectionUtils.isNotEmpty(demanderConfig.getPreferAuxiliaries())) {
+                        demanderConfig.getPreferAuxiliaries().remove(operator.getId());
+                        this.update(demanderConfig);
+                    }
+                });
             }
 
             super.update(userConfig);
