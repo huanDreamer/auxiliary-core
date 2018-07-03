@@ -15,6 +15,7 @@ import top.sillyfan.auxiliaryplatform.domain.model.repository.UserMapper;
 import top.sillyfan.auxiliaryplatform.service.UserService;
 import top.sillyfan.auxiliaryplatform.util.MybatisUtil;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -126,22 +127,25 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long, UserMapper> imp
     @Override
     @Transactional(readOnly = true)
     public List<User> findBySuperUser(Long id) {
+
+        if (Objects.isNull(id)) {
+            return Collections.emptyList();
+        }
         UserExample example = new UserExample();
 
-        if (Objects.nonNull(id)) {
-            example.createCriteria().andSuperUserEqualTo(id);
-        }
+        example.createCriteria().andSuperUserEqualTo(id);
         return repository.selectByExample(example);
     }
 
     @Override
     @Transactional(readOnly = true)
     public List<User> findBySuperUserIn(List<Long> ids) {
-        UserExample example = new UserExample();
 
-        if (CollectionUtils.isNotEmpty(ids)) {
-            example.createCriteria().andSuperUserIn(ids);
+        if (CollectionUtils.isEmpty(ids)) {
+            return Collections.emptyList();
         }
+        UserExample example = new UserExample();
+        example.createCriteria().andSuperUserIn(ids);
         return repository.selectByExample(example);
     }
 
