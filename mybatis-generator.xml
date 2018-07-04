@@ -155,7 +155,7 @@
                             typeHandler="top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.LongSetTypeHandler"/>
         </table>
 
-        <table tableName="t_user_task_link" domainObjectName="UserTaskLink"
+        <table tableName="t_user_task_link" domainObjectName="UserTaskLink" alias="utl"
                enableCountByExample="true"
                enableUpdateByExample="true"
                enableDeleteByExample="true"

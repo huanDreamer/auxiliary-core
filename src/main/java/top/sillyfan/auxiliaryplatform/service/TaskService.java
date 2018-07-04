@@ -25,6 +25,8 @@ public interface TaskService extends BaseService<Task, Long, TaskMapper> {
 
     Long complateTask(Task task, UserTaskLink userTaskLink);
 
+    Long failTask(Task task, UserTaskLink userTaskLink);
+
     Long userComplateTask(Task task, UserTaskLink userTaskLink);
 
     /**
@@ -33,4 +35,6 @@ public interface TaskService extends BaseService<Task, Long, TaskMapper> {
      * @param taskId
      */
     void taskExpire(Long taskId);
+
+    Page<Task> findByAuxiliaryIdAndStatus(Long id, Integer status, PageRequest page);
 }

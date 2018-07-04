@@ -130,7 +130,29 @@ public class TaskServiceImpl extends BaseServiceImpl<Task, Long, TaskMapper> imp
 
         super.update(task);
 
-        userTaskLinkService.create(userTaskLink);
+        userTaskLinkService.update(userTaskLink);
+
+        return task.getId();
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public Long failTask(Task task, UserTaskLink userTaskLink) {
+
+        // 用户余额增加
+        User demander = userService.findOne(task.getDemanderId());
+
+        demander.setBalance(demander.getBalance().add(task.getPrice()));
+
+        userService.update(demander);
+
+        // 异常结束
+        task.setStatus(TaskDef.TaskStatusEnum.Exception.getCode());
+        userTaskLink.setStatus(TaskDef.TaskStatusEnum.Exception.getCode());
+
+        super.update(task);
+
+        userTaskLinkService.update(userTaskLink);
 
         return task.getId();
     }
@@ -235,7 +257,7 @@ public class TaskServiceImpl extends BaseServiceImpl<Task, Long, TaskMapper> imp
         }
 
         // 暂停和冻结：任务状态不变，但是把钱加回来
-        if(status.equals(TaskDef.TaskStatusEnum.Disabled) || status.equals(TaskDef.TaskStatusEnum.Frozen)) {
+        if (status.equals(TaskDef.TaskStatusEnum.Disabled) || status.equals(TaskDef.TaskStatusEnum.Frozen)) {
             addBalance(task);
             return;
         }
@@ -256,6 +278,29 @@ public class TaskServiceImpl extends BaseServiceImpl<Task, Long, TaskMapper> imp
             this.update(task);
             return;
         }
+    }
+
+    @Override
+    public Page<Task> findByAuxiliaryIdAndStatus(Long id, Integer status, PageRequest page) {
+
+        TaskExample example = new TaskExample();
+
+        example.createCriteria().andAuxiliaryIdEqualTo(id).andStatusEqualTo(status);
+
+        int total = repository.countByExample(example);
+
+        if (total == 0) {
+            return Page.empty(page.getPage());
+        }
+
+        example.setOffset(page.getOffset());
+        example.setLimit(page.getLimit());
+
+        example.setOrderByClause("id desc");
+
+        List<Task> tasks = repository.selectByExample(example);
+
+        return Page.of(tasks, page.getPage(), total);
     }
 
     private void addBalance(Task task) {

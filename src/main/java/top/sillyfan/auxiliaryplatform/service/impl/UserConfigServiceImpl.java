@@ -11,6 +11,7 @@ import top.sillyfan.auxiliaryplatform.domain.model.UserConfigExample;
 import top.sillyfan.auxiliaryplatform.domain.model.repository.UserConfigMapper;
 import top.sillyfan.auxiliaryplatform.service.UserConfigService;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,6 +38,21 @@ public class UserConfigServiceImpl extends BaseServiceImpl<UserConfig, Long, Use
         }
 
         return Optional.of(userConfigs.get(0));
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<UserConfig> findByUserId(List<Long> userIds) {
+
+        if(CollectionUtils.isEmpty(userIds)) {
+            return Collections.emptyList();
+        }
+
+        UserConfigExample example = new UserConfigExample();
+
+        example.createCriteria().andUserIdIn(userIds);
+
+        return repository.selectByExample(example);
     }
 
     @Transactional(rollbackFor = Exception.class)
