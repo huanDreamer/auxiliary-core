@@ -181,6 +181,8 @@ public class UserExample {
 
         protected List<Criterion> lastPasswordResetDateCriteria;
 
+        protected List<Criterion> expireDateCriteria;
+
         protected List<Criterion> allCriteria;
 
         protected List<Criterion> criteria;
@@ -190,6 +192,7 @@ public class UserExample {
             criteria = new ArrayList<Criterion>();
             authorizesCriteria = new ArrayList<Criterion>();
             lastPasswordResetDateCriteria = new ArrayList<Criterion>();
+            expireDateCriteria = new ArrayList<Criterion>();
         }
 
         public List<Criterion> getAuthorizesCriteria() {
@@ -232,10 +235,31 @@ public class UserExample {
             allCriteria = null;
         }
 
+        public List<Criterion> getExpireDateCriteria() {
+            return expireDateCriteria;
+        }
+
+        protected void addExpireDateCriterion(String condition, Object value, String property) {
+            if (value == null) {
+                throw new RuntimeException("Value for " + property + " cannot be null");
+            }
+            expireDateCriteria.add(new Criterion(condition, value, "top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler"));
+            allCriteria = null;
+        }
+
+        protected void addExpireDateCriterion(String condition, DateTime value1, DateTime value2, String property) {
+            if (value1 == null || value2 == null) {
+                throw new RuntimeException("Between values for " + property + " cannot be null");
+            }
+            expireDateCriteria.add(new Criterion(condition, value1, value2, "top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler"));
+            allCriteria = null;
+        }
+
         public boolean isValid() {
             return criteria.size() > 0
                 || authorizesCriteria.size() > 0
-                || lastPasswordResetDateCriteria.size() > 0;
+                || lastPasswordResetDateCriteria.size() > 0
+                || expireDateCriteria.size() > 0;
         }
 
         public List<Criterion> getAllCriteria() {
@@ -244,6 +268,7 @@ public class UserExample {
                 allCriteria.addAll(criteria);
                 allCriteria.addAll(authorizesCriteria);
                 allCriteria.addAll(lastPasswordResetDateCriteria);
+                allCriteria.addAll(expireDateCriteria);
             }
             return allCriteria;
         }
@@ -1483,6 +1508,66 @@ public class UserExample {
 
         public Criteria andOldIdNotBetween(String value1, String value2) {
             addCriterion("old_id not between", value1, value2, "oldId");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpireDateIsNull() {
+            addCriterion("expire_date is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpireDateIsNotNull() {
+            addCriterion("expire_date is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpireDateEqualTo(DateTime value) {
+            addExpireDateCriterion("expire_date =", value, "expireDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpireDateNotEqualTo(DateTime value) {
+            addExpireDateCriterion("expire_date <>", value, "expireDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpireDateGreaterThan(DateTime value) {
+            addExpireDateCriterion("expire_date >", value, "expireDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpireDateGreaterThanOrEqualTo(DateTime value) {
+            addExpireDateCriterion("expire_date >=", value, "expireDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpireDateLessThan(DateTime value) {
+            addExpireDateCriterion("expire_date <", value, "expireDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpireDateLessThanOrEqualTo(DateTime value) {
+            addExpireDateCriterion("expire_date <=", value, "expireDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpireDateIn(List<DateTime> values) {
+            addExpireDateCriterion("expire_date in", values, "expireDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpireDateNotIn(List<DateTime> values) {
+            addExpireDateCriterion("expire_date not in", values, "expireDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpireDateBetween(DateTime value1, DateTime value2) {
+            addExpireDateCriterion("expire_date between", value1, value2, "expireDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpireDateNotBetween(DateTime value1, DateTime value2) {
+            addExpireDateCriterion("expire_date not between", value1, value2, "expireDate");
             return (Criteria) this;
         }
     }

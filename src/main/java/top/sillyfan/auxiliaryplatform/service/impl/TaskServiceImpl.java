@@ -126,7 +126,9 @@ public class TaskServiceImpl extends BaseServiceImpl<Task, Long, TaskMapper> imp
         settlementService.increaseSettlement(userTaskLink.getUserId(), task.getDemanderId(), TaskDef.TaskStatusEnum.from(userTaskLink.getStatus()), SettlementDef.SettlementTypeEnum.Complete);
 
         task.setStatus(TaskDef.TaskStatusEnum.Completed.getCode());
+        task.setUpdateTime(DateTime.now());
         userTaskLink.setStatus(TaskDef.TaskStatusEnum.Completed.getCode());
+        userTaskLink.setUpdateTime(DateTime.now());
 
         super.update(task);
 
@@ -150,6 +152,9 @@ public class TaskServiceImpl extends BaseServiceImpl<Task, Long, TaskMapper> imp
         task.setStatus(TaskDef.TaskStatusEnum.Exception.getCode());
         userTaskLink.setStatus(TaskDef.TaskStatusEnum.Exception.getCode());
 
+        task.setUpdateTime(DateTime.now());
+        userTaskLink.setUpdateTime(DateTime.now());
+
         super.update(task);
 
         userTaskLinkService.update(userTaskLink);
@@ -162,6 +167,9 @@ public class TaskServiceImpl extends BaseServiceImpl<Task, Long, TaskMapper> imp
     public Long userComplateTask(Task task, UserTaskLink userTaskLink) {
         task.setStatus(TaskDef.TaskStatusEnum.UserCompleted.getCode());
         userTaskLink.setStatus(TaskDef.TaskStatusEnum.UserCompleted.getCode());
+
+        task.setUpdateTime(DateTime.now());
+        userTaskLink.setUpdateTime(DateTime.now());
 
         super.update(task);
         userTaskLinkService.update(userTaskLink);

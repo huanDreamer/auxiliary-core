@@ -61,6 +61,9 @@
             <columnOverride column="task_status" javaType="java.lang.Integer"/>
             <columnOverride column="last_password_reset_date" javaType="org.joda.time.DateTime"
                             typeHandler="top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler"/>
+
+            <columnOverride column="expire_date" javaType="org.joda.time.DateTime"
+                            typeHandler="top.sillyfan.auxiliaryplatform.dao.mybatis.typehandler.JodaDateTimeTypeHandler"/>
         </table>
 
         <table tableName="t_access_token" domainObjectName="AccessToken"

@@ -26,6 +26,7 @@ public enum ApiResponseCode {
     Api_1019(ApiResponseCodeDef.Api_1019, "用户已被冻结接单功能，请联系管理员"),
     Api_1020(ApiResponseCodeDef.Api_1020, "客户已被冻结建单功能，请联系管理员"),
     Api_1021(ApiResponseCodeDef.Api_1021, "文件过大"),
+    Api_1022(ApiResponseCodeDef.Api_1022, "账户使用期限已到，请联系管理员"),
     ;
 
     private String code;

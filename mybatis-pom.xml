@@ -41,13 +41,13 @@
 		<!-- <mybatis.generator.configurationFile>mybatis-generator.xml</mybatis.generator.configurationFile> -->
 
 		<mybatis.generator.jdbcDriver>com.mysql.jdbc.Driver</mybatis.generator.jdbcDriver>
-		<mybatis.generator.jdbcURL>jdbc:mysql://111.231.146.172:3306/auxiliary?useUnicode=true&amp;characterEncoding=UTF-8</mybatis.generator.jdbcURL>
+		<mybatis.generator.jdbcURL>jdbc:mysql://47.75.49.122:3306/auxiliary?useUnicode=true&amp;characterEncoding=UTF-8</mybatis.generator.jdbcURL>
 		<mybatis.generator.jdbcUserId>root</mybatis.generator.jdbcUserId>
 		<mybatis.generator.jdbcPassword>djuey2eh8u</mybatis.generator.jdbcPassword>
 
 		<mybatis.generator.tableNames>
 			<!--t_user,t_user_task_link,t_user_config,t_task,t_settlement,t_access-->
-			t_user_task_link
+			t_user
 		</mybatis.generator.tableNames>
 
 	</properties>

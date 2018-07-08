@@ -12,8 +12,8 @@ import top.sillyfan.auxiliaryplatform.constants.UserDef;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Getter
@@ -56,6 +56,8 @@ public class JwtUser implements UserDetails {
 
     private DateTime lastPasswordResetDate;
 
+    private DateTime expireDate;
+
     @JsonIgnore
     @Override
     public boolean isAccountNonExpired() {
@@ -88,7 +90,8 @@ public class JwtUser implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return UserDef.UserStatusEnum.Enabled.match(this.status);
+        return UserDef.UserStatusEnum.Enabled.match(this.status)
+                && (Objects.isNull(this.getExpireDate()) || this.getExpireDate().plusDays(1).isAfterNow());
     }
 
     @JsonIgnore
